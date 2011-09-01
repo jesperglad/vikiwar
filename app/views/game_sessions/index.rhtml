@@ -1,0 +1,260 @@
+<%= stylesheet_link_tag 'game_sessions' %>
+
+<%= render(:partial => "shared/hexmap") %>
+
+<script type="text/javascript">
+  x_graphic_offset = 160;
+  y_graphic_offset = 130;
+
+  var action_id = '<%= @action_id %>';
+  var battles_hash = $H(eval(<%= @battles_hash_json %>));
+    
+  var ac = null;
+  var uc = null;
+  var aec = null;
+  var hexMap = null;
+
+  function on_image_preload(images, num_images) {
+    hexMapView.draw();
+    hexMapView.showHighlightedHexes();    
+
+    if (action_id == "create_a_battle") {
+      hexMapView.fogOfWarOn();
+    } else {
+      showBattlesHash(battles_hash);
+      hexMapView.fogOfWarOff();
+    } 
+    checkStatus ();
+    imCheckStatus(0);
+    indicateUserHaveOrdersToSend();
+    <%= remote_function :url => {:action => 'notify_online_and_retive_users_online', :controller => 'user'}, :update => 'all_users_online_list' %>
+  }
+
+  // -----------------------------------------------------------------------------------------------------------
+  // Main function
+  // -----------------------------------------------------------------------------------------------------------
+  function main() {
+    ac = new AreaCollection(terrains_array, areas_array);
+    uc = new UnitCollection(unitTypes,unitsArray);
+    aec = new AreaElementCollection(areaElementTypesArray, areaElementsArray);
+    hexMap = new HexMapModel(ac, uc, aec);
+
+    var image_handler = loadImages();
+    hexMapView = new HexMapView(
+      user_id, // MISSING
+      "game_session_index_view",
+      hexMap,
+      w_hex,
+      h_hex,
+      w_hex_map,
+      h_hex_map,
+      w_canvas,
+      h_canvas,
+      h_sqr_to_hex_conner,
+      x_graphic_offset,
+      y_graphic_offset,
+      visible_hexs,
+      unit_selected_image_name,
+      opacity_image_name,
+      opacity_second_overlay_image_name,
+      image_handler,
+      user_colors
+    );
+
+    $("battles_in_hex").hide();
+
+    periodaclllyCheckStatus()
+    imPeriodaclllyCheckStatus();
+  }
+
+  function indicateUserHaveOrdersToSend() {
+    var es = $$('div.game_sessions_wait_for_orders');
+    es.each(function(e){
+      Effect.Pulsate(e, { pulses: 20, duration: 5});
+    });
+
+    if (es.size() == 0) {
+      document.title = "Vikiwar";
+    } else {
+      document.title = "Orders plz!";
+    }
+  }
+
+  function redraw() {
+    hexMapView.clearAll();
+    hexMapView.clearHexMap();
+    hexMapView.draw();
+    hexMapView.fogOfWarOff();
+  }
+
+  function showBattlesHash(theBattlesHash) {
+    var index = 0
+    var hexes = theBattlesHash.keys();
+    var theThis = this;
+    theThis.theBattlesHash = theBattlesHash;
+    
+    $A(hexes).each(function(theHexS){
+      var theHex = parseInt(theHexS);      
+      var theBattleInfos = theThis.theBattlesHash.get(theHexS);
+      var theBattleInfo = theBattleInfos[0];
+      var theBattle = theBattleInfo[0];
+      var gsus_orders_recived = theBattleInfo[1];
+      var xHex = theThis.hexMap.getHexX(theHex);
+      var yHex = theThis.hexMap.getHexY(theHex, xHex);
+      var imageName = "red_man";
+
+      if (theBattle.state == "ACTIVE") {
+        if (gsus_orders_recived == false) {
+          imageName = "green_man"
+        } else {
+          imageName = "green_sword"
+        }
+      }
+
+      theThis.hexMapView.addBitmap(
+        "battle", index, xHex, yHex, 6, 6,
+        theThis.hexMapView.imageHandler.images[imageName],
+        theThis.hexMapView.Z_RED_OPACITY_LAYER + theThis.hexMapView.Z_UNIT);
+        
+      index += 1
+    });
+  }
+
+// -----------------------------------------------------------------------------------------------------------
+//  Controller -  Controller periodically updates
+// -----------------------------------------------------------------------------------------------------------
+
+  var status_interval_id = null;
+  function periodaclllyCheckStatus() {
+    status_interval_id = setInterval(checkStatus, 60000);   // 60 sec
+  }
+
+  function checkStatus () {
+    <%= remote_function(:url => { :action => 'status', :controller => 'game_sessions'}, :update => "game_sessions_my_battles", :complete => "updateStatus();") %>;
+  }
+
+  function updateStatus() {
+    $(battles_hash_json_wapper).normalize();
+    var battle_hash_json = $(battles_hash_json_wapper).firstChild.data;
+    battles_hash =  $H(eval("("+battle_hash_json+")"));
+    showBattlesHash(battles_hash);
+    
+    indicateUserHaveOrdersToSend();
+  }
+
+  function scrollIt() {
+    var obj=document.getElementById('im_messages_history');
+    obj.scrollTop=obj.scrollHeight;
+  }
+
+  function r(the_index, the_text) {
+    $('region_name_info').update(""+the_text);
+  }
+
+  function on_click_create_battle(theIndex) {
+    if (value_in_array (theIndex, visible_hexs)) {
+      hexMapView.selectHex(theIndex);
+      <%= remote_function :url => {:action => :battle_field_selected, :controller => :game_sessions},
+        :update => 'ajaxWapper',
+        :with => "'selected_index='+encodeURIComponent(theIndex)",
+        :complete => "setupAutocompletion()"
+      %>
+    }
+  }
+
+  function mouseDown(event) {}
+
+  function mouseUp(event) {}
+
+  function mouseMove(event) {}
+
+  function r(theIndex) {}
+
+  // On Click
+  function c(theIndex) {
+    $("battles_in_hex").hide();
+
+    if (action_id == "create_a_battle") {
+      on_click_create_battle(theIndex);
+
+    } else if (action_id == "join_a_battle") {
+
+    } else {
+      var theBattleInfos = theBattlesHash.get(""+theIndex);
+
+      if (theBattleInfos != null) {
+        if (theBattleInfos.length == 1) {
+          var theBattleInfo = theBattleInfos[0];
+          var theBattle = theBattleInfo[0];
+          location.href="<%= url_for :controller => 'main', :action => "set_game_session_from_javascript", :only_path => false %>/"+theBattle.id;
+        } else {
+          var xHex = hexMap.getHexX(theIndex);
+          var yHex = hexMap.getHexY(theIndex, xHex);
+          var x = hexMapView.getAreaPixelX(xHex, yHex) + x_graphic_offset+20;
+          var y = hexMapView.getAreaPixelY(yHex) + y_graphic_offset+5;
+          $("battles_in_hex").setStyle('visibility: visible; top: '+y+'px; left: '+x+'px;' );
+
+          var parthText = "<%= url_for :controller => 'main', :action => "set_game_session_from_javascript", :only_path => false %>/";
+          var htmlText = "<ul>";
+          for (var i = 0; i < theBattleInfos.length; i++) {
+            var theBattleInfo = theBattleInfos[i];
+            
+            htmlText += "<li><a href='"+parthText+theBattleInfo[0].id+"'>"+theBattleInfo[0].name+"</a></li>"
+          }
+          htmlText += "</ul>"
+          $("battles_in_hex").update(htmlText);
+          $("battles_in_hex").show();
+        }
+
+      }
+    }
+  }
+
+</script>
+
+<%= periodically_call_remote :url => {:action => 'notify_online_and_retive_users_online', :controller => 'user'}, :frequency => 30, :update => 'all_users_online_list' %>
+
+Midgard, The Kingdom of Denmark, at beginning of the Fimbul winter ...
+<div id="game_session_main">    
+  <div id="game_session_index_view">
+    <div id="region_name_info"></div>
+    <div id="overlayimage">
+      <script type="text/javascript">
+        document.write ("<img src='/images/32x32/transpng.png' style='position: relative; left: "+x_graphic_offset+"; top: "+y_graphic_offset+"; z-index: "+Z_IMAGE_MAP+" '  width='<%=@w_canvas %>' height='<%=@h_canvas %>' usemap='#imagemap' border='0'/>");
+      </script>
+    </div>
+    
+    <div id="popup_game_sessions_list"></div>	
+
+    <div id="game_sessions_nav_bar">
+      <ul class="game_sessions_nav_bar">
+        <li><%= link_to "My battles", { :controller => 'game_sessions', :action => "index", :id=>""}  %></li>
+        <% if !user_max_num_of_battles_reaced %>
+        	<li><%= link_to "Create a battle", { :controller => 'game_sessions', :action => "index", :id=>"create_a_battle"}  %></li>
+        	<li><%= link_to "Join a battle", { :controller => 'game_sessions', :action => "index", :id=>"join_a_battle"}  %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div id="game_session_gs_info">
+      <% if @action_id == "create_a_battle" %>
+        <%= render(:partial => "create_battle") %>
+      <% elsif @action_id == "join_a_battle" %>
+        <%= render(:partial => "join_a_battle") %>
+      <% else %>
+        <div id="game_sessions_my_battles">
+          <%= render(:partial => "my_battles") %>
+        </div>
+      <% end %>
+    </div>
+    <div id ="battles_in_hex"></div>    
+  </div>
+</div>
+
+<map name="imagemap"><%= @image_map %></map>
+<div id="ajaxWapper"></div>
+<div id="status_data_id"></div>
+
+<div id="all_users_online_box">
+  <div id='all_users_online_list'></div>
+</div>
+<%= render(:partial => "shared/im")%>

@@ -1,0 +1,17 @@
+<%= javascript_include_tag 'prototype' %>
+
+<html>
+  <head>
+  	<title>Vikiwar Admin</title>
+  </head>
+  <body bgcolor="white" onload ="main();" >
+    <div id="admin_nav_bar">
+      [ <%= link_to "Users", :controller => :admin, :action => :index %> ]
+      [ <%= link_to "Region Editor", :controller => :ginnungagap, :action => :index %> ]
+      [ <%= link_to "Unit Editor", :controller => :unit_editor, :action => :index %> ]
+    </div>
+
+  	<%= yield :layout %>
+
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<html><body onload ="imPeriodaclllyCheckStatus();" >
+
+<%= javascript_include_tag 'prototype' %>
+<script type="text/javascript"> 
+function scrollIt() {
+    var obj=document.getElementById('im_messages_history');
+    obj.scrollTop=obj.scrollHeight;   
+}
+</script>
+
+<div id="im">
+
+    <div id="rooms_sidebar_left">
+        <h3>Rooms</h3>
+        <ul class="im_room_list">
+            <% @rooms.each do |room_name| %>
+                <li><%= link_to room_name, { :controller => 'main', :action => "users", :id => room_name}  %> </li>
+            <% end %>
+        </ul>
+    </div>
+
+    <div id="im_room">      
+        <h3>Room: <%= @selected_room %></h3>
+        <div id="im_messages_history">
+            <%= render(:partial => "shared/im_room")%>
+        </div>
+        <div id="im_text_input_form">
+            <% form_remote_tag(:url => {:controller => "im", :action => "im_push_messages"},  :update => "im_messages_history") do %>
+                <%= text_field 'im_text_input', 'im_text', :size=>60 %>
+            <% end %>
+        </div>
+    </div>
+ </div>
+
+<script type="text/javascript"> 
+
+// -----------------------------------------------------------------------------------------------------------
+//  Controller -  Controller periodically updates
+// -----------------------------------------------------------------------------------------------------------
+
+var imStatusIntervalld = null;
+function imPeriodaclllyCheckStatus() {
+    imStatusIntervalld = setInterval(imCheckStatus, 5000);   // 5 sec
+}
+
+function imCheckStatus () {
+    <%= remote_function(:url => { :action => 'im_pull_messages', :controller => 'im'}, :update => "im_messages_history") %>;
+}
+
+</script>
+
+</body></html>

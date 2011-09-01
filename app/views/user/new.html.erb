@@ -1,0 +1,13 @@
+<% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, :id => "flash_#{name}" %>
+<% end %>
+
+<div id="user_form">
+  <%= render(:partial => "form") %>
+</div>
+
+<script type="text/javascript">
+  function main() {
+    return 0;
+  }
+</script>

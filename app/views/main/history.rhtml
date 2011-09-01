@@ -1,0 +1,27 @@
+<html><body onload ="main();" >
+<div id="game_info_bar"> 
+    <div id="history">
+        <% if @current_turn_number > 1 %>
+            <h3 class = "history">Results of turn <%= (@current_turn_number-1) %></h3>
+            <div id="history_body_text_base">
+                <%= @the_history %>
+             </div>
+        <% else %>
+            <h3>Nothing has happen yet</h3>
+        <% end %>
+     </div>
+     <div id="users_status"> </div>
+</div>
+
+<div id="game_info_bar_2">
+   <ul class="game_info_bar_2">
+        <li id="next_turn"><div id="game_info_bar_2_button">Next Turn</div></li>
+        <li id="resources">Resources: 0</li> 
+        <li id ="current_turn">Turn</li>                  
+    </ul>
+</div>
+
+<%= render(:partial => "map") %>
+
+</body></html>
+--------

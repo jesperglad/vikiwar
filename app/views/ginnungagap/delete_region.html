@@ -1,0 +1,30 @@
+<h1>Delete Region</h1>
+
+<fieldset>    
+  <legend>Select Region to be deleted</legend>
+
+<% form_for :region do |form| %>
+    <p>
+      <label for="name">Name:</label>
+      <%= form.text_field :name, :size=>20, :maxlength=>20 %>
+    </p>
+
+    <p>
+      <label for="width">Width:</label>
+      <%= form.text_field :w_hex_map, :size=>3, :maxlength=>3 %>
+    </p>
+
+    <p>
+      <label for="height">Height:</label>
+      <%= form.text_field :h_hex_map, :size=>3, :maxlength=>3 %>
+    </p>
+
+  <%= submit_tag "Create Region", :class => "submit" %>
+
+<% end %>
+</fieldset>
+<script type="text/javascript">
+  function main() {
+    return 0;
+  }
+</script>

@@ -1,0 +1,73 @@
+<div id="game_sessions_create_battle">
+
+<%  if (@max_num_of_players == 0) %>
+  <div id="game_sessions_important_messages">Choose your battle field on the map</div>
+<% else %>
+  Selected battle field: <a href='../../images/<%=  @battle_field_name %>.png' target='_blank'><b><%=  @battle_field_name %></b></a>
+  <!-- <a href='../../images/<%=  @battle_field_name %>.png' target='_blank'> <img src='../../images/32x32/<%=  @battle_field_name %>.png'/></a> -->
+  <div>
+  <% form_for :game_session, :url => {:action => :create_battle_done} do |f|  %>
+
+    <% if flash[:missing_battle_name] %>
+      <div id="create_battle_notice">
+        <%=flash[:missing_battle_name]%>
+      </div>
+    <% end %>
+    <p>
+       This battle will be known as: <br />
+       <%= f.text_field :name, {:value => @name_of_battle_field.to_s} %>
+    </p>
+
+    <% if flash[:missing_battle_field] %>
+      <div id="create_battle_notice">
+        <%=flash[:missing_battle_field]%>
+      </div>
+    <% end %>
+    <p>
+       Next turn can begin after:
+       <%= f.select :duration_between_turns, @turn_durations, {} %>
+    </p>
+
+    <% if @max_num_of_players && @max_num_of_players > 0 %>
+      <h2>Players that can join the battle</h2>
+      <div id="game_session_small_info_text">
+        To invite a specific person which is:
+        <ul>
+          <li><b>already in the game</b>, simply write the in game name of the player or the e-mail.</li>
+          <li><b>not yet in the game</b>, enter the e-mail.</li>
+        </ul>
+        To allow any Vikiwar player to join the battle, simply leave the field empty.
+      </div>
+      <%
+        i = 0
+        (@max_num_of_players-1).times {
+          i += 1
+
+          text_value = ""
+          if @text_input && @text_input["game_session_text_input#{i}_param"]
+            text_value = @text_input["game_session_text_input#{i}_param"]
+          end
+      %>
+        <p>
+          <% if flash["game_session_text_input#{i}_param_flash"] %>
+            <div id="create_battle_notice">
+              <%=flash["game_session_text_input#{i}_param_flash"]%>
+            </div>
+          <% end %>
+          Player <%= i %>:
+          <input
+            type='text'
+            id='<%= "game_session_text_input#{i}" %>'
+            name='<%= "game_session_text_input#{i}_param" %>'
+            value='<%= text_value %>'
+          >
+          
+        </p>
+        <div id='<%= "game_session_text_input#{i}_choices" %>' class='<%= "autocomplete" %>'></div>
+      <% }  %>
+    <% end  %>
+    <%= submit_tag "Create battle", :name=>nil %>
+  <% end  %>
+  </div>
+<% end %>
+</div>

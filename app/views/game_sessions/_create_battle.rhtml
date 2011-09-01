@@ -1,0 +1,22 @@
+
+<h2>Create a battle</h2>
+<div id="ajaxWapper">
+  <%= render :partial=>'create_battle_field_form' %>
+</div>
+
+<script type="text/javascript">
+  function setupAutocompletion() {
+    var elements = $$('input[id^="game_session_text_input"]');
+    elements.each(function(theElement){
+      new Ajax.Autocompleter(theElement, theElement.id + "_choices", "autocomplete_text_input", {minChars: 2, parameters: 'input_index='+theElement.id});
+    });
+   }
+
+   function main_create_battle() {
+    if (<%= @max_num_of_players %> > 0) {
+      setupAutocompletion();
+    }
+
+    return 0;
+  }
+</script>

@@ -1,0 +1,14 @@
+#errorExplanation {
+    padding-left: 0px;
+    border: solid 1px red;
+    background-color: #FF9999;
+}
+
+#errorExplanation h2{
+    margin-top: 0px;
+    padding-left: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: red;
+    font-size: 1.1em;
+}

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<users>
+    <user name='Open 1' password='iodfhur9237_?45' password_confirmation='iodfhur9237_?45' email="du1@vikiwar.com" in_game_name="Open 1" account_type='proxy_user'></user>
+    <user name='Open 2' password='qeytgnb983bjkf' password_confirmation= 'qeytgnb983bjkf' email="du2@vikiwar.com" in_game_name="Open 2" account_type='proxy_user'></user>
+    <user name='Open 3' password='ti4395_4375' password_confirmation='ti4395_4375' email="du3@vikiwar.com" in_game_name="Open 3" account_type='proxy_user'></user>
+    <user name='Open 4' password='bfmur__vkf' password_confirmation='bfmur__vkf' email="du4@vikiwar.com" in_game_name="Open 4" account_type='proxy_user'></user>
+    <user name='Open 5' password='teitn58_fvxfv' password_confirmation='teitn58_fvxfv' email="du5@vikiwar.com" in_game_name="Open 5" account_type='proxy_user'></user>
+    <user name='Open 6' password='M459bRT__cvcv' password_confirmation='M459bRT__cvcv' email="du6@vikiwar.com" in_game_name="Open 6" account_type='proxy_user'></user>
+    <user name='Open 7' password='YROP_bvmc73' password_confirmation='YROP_bvmc73' email="du7@vikiwar.com" in_game_name="Open 7" account_type='proxy_user'></user>
+
+    <reserved_names>
+        Brimir, Einheriar, Garmr, Hel, Jötunheimr, Nidhogg, Niflheim, Niðavellir, Svartálfaheimr,
+    </reserved_names>
+</users>
+
+<terrains>
+    <terrain name="sea" healing_modifier="0" description="Only passable for sea units"></terrain>
+    <terrain name="mountains" healing_modifier="0" description="Magnification view, but rough enviroment where only the strongest units will heal."></terrain>
+    <terrain name="grassland" healing_modifier="2" description="Great places for any unit to heal, but with a limited view"></terrain>
+    <terrain name="swamp" healing_modifier="0" description="Rough enviroment, where only the strongest units will heal, and with a limited view"></terrain>
+    <terrain name="hills" healing_modifier="1" description="Okay view, not the best place heal."></terrain>
+    <terrain name="forest" healing_modifier="1" description="Difficult place to fight, not the best place heal and with limted view."></terrain>
+    <terrain name="shallow_water" healing_modifier="-1" description="Passable by land units, but not a place for them to stay."></terrain>
+</terrains>
+ 
+<area_element_types>
+    <area_element_type name='city' sight_range='3' income='10'></area_element_type>
+    <area_element_type name='harbor' sight_range='4' income='20'></area_element_type>
+</area_element_types>
+
+<regions>
+    <region name="Denmark" hexs="0" info="The to become kingdom of Denmark" description="">     
+     <region name="Bornholm" hexs="223" info="Bornholm" description="In ancient Danish the island Bornholm was named Borghand or Borghund; these names were related to Old Norse borg height and bjarg/berg mountain/rock, as it is an island that rises high from the sea. If you start a fight on Bornholm, then be awear it is not even fight.">
+        <region name="Guldborgsund" hexs="220" info="Guldborgsund" description="Guldborgsund seperate Falster and Lolland.">
+            <region name="Hejrede Vold" hexs="219" info="Hejrede Vold" description="">
+                <region name="Ravnsborg " hexs="218" info="Ravnsborg" description="">
+                </region>
+            </region>
+            <region name="Stege Bugt" hexs="206" info="Stege Bugt" description="">
+                <region name="Karrebaeksminde" hexs="191" info="Kaarrebaeksminde" description="">
+                    <region name="Trelleborg" hexs="177" info="Trelleborg" description="">
+                    </region>
+                </region>
+                <region name="Svolder" hexs="180,194,195,207,208,209,221,222,234,235,236,237" info="Svolder" description="">
+                </region>
+            </region>            
+        </region>
+      </region>
+      <region name="Rungholt" hexs="226" info="Rungholt" description="Rungholt was a wealthy city in Nordfriesland which sank beneath the waves in a storm tide on January 16, 1362.">
+        <region name="Hollingsted" hexs="227" info="Hollingsted" description="Hollingsted was a wealthy city placed by the river Treene on the trade rute between the North Sea and Redeby.">
+        </region>
+      </region>
+      <region name="Mors" hexs="71" info="Mors" description="The island of Mors is of major important to get a foothold into one of major waterway in the Kingdom of Denmark. Lots of opponents will try to win the control, but it is a pure area with limited resources.">
+        <region name="Noerklit" hexs="72" info="Noerklit" description="A bit of confused map, with people spread all over, which makes it hard to focus on one enemy.">
+        </region>
+      </region>
+      <region name="Gothenburg" hexs="38" info="Gothenburg" description="By the year 1000, Lödöse was an important trading town, located between modern-day Oslo and Copenhagen and near the mouth of the Göta river.">
+        <region name="Lygnern" hexs="52" info="Lygnern" description="">
+        </region>
+      </region>
+    </region>
+</regions>
+
+<titles>
+    <title rank="1" battles="0" min_subscription_type="trial" name='Thrall'></title>
+    <title rank="2" battles="8" min_subscription_type="pro" name='Karl'></title>
+    <title rank="3" battles="16" min_subscription_type="pro" name='Warrior'></title>
+    <title rank="4" battles="16" min_subscription_type="preium" name='Himthiki'></title>
+    <title rank="5" battles="32" min_subscription_type="preium" name='Housekarl'></title>
+    <title rank="6" battles="100" min_subscription_type="preium" name='Jarl'></title>
+    <title rank="7" battles="200" min_subscription_type="preium" name='King'></title>
+    <title rank="8" battles="500" min_subscription_type="preium" name='High King'></title>
+</titles>
+
+</root>

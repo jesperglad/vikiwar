@@ -1,0 +1,68 @@
+<% gsuss = GameSessionUserStatus.find :all, :conditions => ["user_id = ? and removed = 'false'", current_user.id] %>
+<h2>My battles (<%= gsuss.size %> out of <%= max_num_of_battles %>)</h2>
+
+<% if @game_sessions.size == 0 %>
+You are currently not participating in any battles. Join some battles or create some of your own.
+<% end %>
+
+<div id="game_session_my_battle">
+<ul class="game_sessions_games_list">
+<% @game_sessions.each do |gs|%>
+  <%
+    state = "UNDEFINED"
+    if gs.state == "META"
+      state = "This is a meta game, it really should not be listed here."
+    elsif gs.state == "STARTING"
+      if gs.get_num_of_poxy_users > 0
+        state = "The battle is waiting to start, but is still missing "+gs.get_num_of_poxy_users.to_s+" out of "+gs.max_num_of_players.to_s+" players."
+      else
+        state = "The battle is waiting to start, but not all players have accepted the invitation."
+      end      
+    elsif gs.state == "ACTIVE"
+      state = "The battle is ongoing."
+    elsif gs.state == "ENDED"
+      state = "The battle came to an end."
+    elsif gs.state == "PEACE"
+      state = "The battle ended in peace."
+    end
+
+    gsus = gs.game_session_user_statuses.find :first, :conditions => ["user_id = ?",current_user.id]
+    if gsus.removed == false
+  %>
+  <li>
+    
+      <% if gsus.state == "killed" || state == "Ended" %>
+        <%= link_to image_tag("32x32/delete.png", :border=>0, :size=>"15x15", :title=>"The battle ended, press to remove it"), {:action => "remove", :id => "#{gs.id}"}  %>
+      <% else %>
+        <% if gs.state == "ACTIVE" %>
+          <% if gsus.orders_recived == false %>
+            <div class="game_sessions_wait_for_orders">
+              <%= image_tag("32x32/green_man.png", :border=>0, :size=>"15x15", :title=>"Your men are awaiting your orders") %>
+            </div>
+          <% else %>
+            <%= image_tag("32x32/green_sword.png", :border=>0, :size=>"15x15", :title=>"Your men have already recived orders from you") %>
+          <% end %>
+
+          <% if gs.is_duration_between_turns_passed %>
+                <%= image_tag("32x32/green_symbol.png", :border=>0, :size=>"15x15", :title=>"Time is up") %>
+          <% end %>
+        <% elsif (gs.state() == "STARTING") %>
+          <%= image_tag("32x32/red_man.png", :border=>0, :size=>"15x15", :title=>"The battle has not started") %>
+          <%= link_to image_tag("32x32/delete.png", :border=>0, :size=>"15x15", :title=>"Press to retread from the battle field"), {:action => "retread", :id => "#{gs.id}"}  %>
+
+        <% elsif (gs.state() == "ENDED") %>
+          <%= link_to image_tag("32x32/delete.png", :border=>0, :size=>"15x15", :title=>"Press to remove the battle from this list"), {:action => "remove", :id => "#{gs.id}"}  %>
+
+        <% elsif (gs.state() == "PEACE") %>
+          <%= link_to image_tag("32x32/delete.png", :border=>0, :size=>"15x15", :title=>"Press to remove the battle from this list"), {:action => "remove", :id => "#{gs.id}"}  %>
+        <% end %>
+      <% end %>
+      <strong>The battle of:</strong> <b><%= link_to "#{gs.name}", { :controller => 'main', :action => "set_game_session", :id => "#{gs.id}"} %></b><br />
+      <strong>Battle field:</strong> <%= gs.region.name %>, <strong>Turn: </strong><%=  gs.current_turn_number %> <br />
+      <%= state %> <br />
+  </li>
+    <% end
+  end %>
+</ul>
+</div>
+<div id="battles_hash_json_wapper"><%= @battles_hash_json %></div>

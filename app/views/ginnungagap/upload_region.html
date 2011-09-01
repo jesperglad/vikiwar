@@ -1,0 +1,21 @@
+<h1>Upload Region</h1>
+
+<%  form_tag(:action => :upload_regions) do %>
+        <%= submit_tag('Upload') %>
+        <table border='0'>
+            <tr><td bgcolor="grey">Select</td><th bgcolor="lightgrey">Region</th> </tr>
+            <% Dir.entries(".").each {|entri| %>
+                <% if entri.include? "_game_session.csv" %>
+                    <tr>
+                        <td bgcolor="grey"><%= check_box_tag('region_'+entri,  :checked_value => "1") %></td>
+                        <td bgcolor="lightgrey"> <%= entri %> </td>
+                    </tr>
+                <% end %>                
+            <% } %>
+        </table>
+<%  end %>
+<script type="text/javascript">
+  function main() {
+    return 0;
+  }
+</script>

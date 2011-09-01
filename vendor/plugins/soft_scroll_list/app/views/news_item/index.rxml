@@ -1,0 +1,16 @@
+xml.instruct! :xml, :version => "1.0"
+xml.rss :version => 2.0 do
+  xml.channel do
+    xml.title "News"
+    xml.description "News from the battlefiend of Vikiwar"
+
+    for news_item in @news
+      xml.item do
+        xml.title news_item.title
+        xml.description news_item.content
+        # xml.pubDate news_item.create_at.to_s(:rfc822)
+        # xml.link formatted_article_url(news_item,:rss)
+      end
+    end
+  end
+end

@@ -1,0 +1,69 @@
+<%= javascript_include_tag :defaults %>
+<%= stylesheet_link_tag 'game_sessions' %>
+<script type="text/javascript">
+  function setupAutocompletion() {
+    var elements = $$('input[id^="game_session_text_input"]');
+    elements.each(function(theElement){
+      new Ajax.Autocompleter(theElement, theElement.id + "_choices", "autocomplete_text_input", {minChars: 2, parameters: 'input_index='+theElement.id});
+    });    
+   }
+</script>
+
+<ul class="game_sessions_nav_bar">
+    <li><%= link_to "My Battles", { :controller => 'game_sessions', :action => "index"}  %></li>
+    <li><%= link_to "Create a battle", { :controller => 'game_sessions', :action => "create_battle"}  %></li>
+    <li><%= link_to "Join a battle", { :controller => 'game_sessions', :action => "joinable"}  %></li>
+</ul>
+<h1>Create a battle</h1>
+<div>
+<% form_for :game_session, :url => {:action => :create_battle_done} do |f|  %>
+
+  <% if flash[:missing_battle_name] %>
+    <div id="create_battle_notice">
+      <%=flash[:missing_battle_name]%>
+    </div>
+  <% end %>
+  <p>
+     This battle will be known as: <br />
+     <%= f.text_field :name, {:value => @name_of_battle_field.to_s} %>
+  </p>
+
+  <% if flash[:missing_battle_field] %>
+    <div id="create_battle_notice">
+      <%=flash[:missing_battle_field]%>
+    </div>
+  <% end %>
+  <p>
+     Select the battle field: <br />
+     <% puts "@selected_battle_field_value: #{@selected_battle_field_value}" %>
+     <%= f.select :battle_field, @game_session_names, { :selected => @selected_battle_field_value.to_i }, { :size => "10"} %>
+     <%= observe_field  :game_session_battle_field,
+                        :frequency => 0.5,
+                        :update => 'ajaxWapper',
+                        :url => {:action => :battle_field_selected},
+                        :with => "'battle_field_name='+encodeURIComponent(value)",
+                        :complete => "setupAutocompletion()"
+     %>
+
+  </p>
+  
+  <p>
+     Next turn can begin after:
+     <%= f.select :duration_between_turns, @turn_durations, {} %>
+  </p>
+  <div id="ajaxWapper">
+    <%= render :partial=>'create_battle_player_name_fields' %>
+  </div>
+  <%= submit_tag "Create battle", :name=>nil %>
+<% end %>
+</div>
+
+<script type="text/javascript">
+  function main() {
+    if (<%= @max_num_of_players %> > 0) {
+      setupAutocompletion();
+    }
+
+    return 0;
+  }
+</script>

@@ -1,0 +1,1353 @@
+<%= javascript_include_tag 'cookie' %>
+<%= javascript_include_tag 'battlereport' %>
+<%= javascript_include_tag 'resources_model2' %>
+<%= javascript_include_tag 'game_options_container' %>
+<%= javascript_include_tag 'next_turn_button' %>
+
+<%= javascript_include_tag 'game_session' %>
+<%= javascript_include_tag 'game_session_view' %>
+<%= javascript_include_tag 'game_session_controller' %>
+
+<%= javascript_include_tag 'user_status_container' %>
+<%= javascript_include_tag 'effects' %>
+<%= javascript_include_tag 'slider' %>
+
+<script type="text/javascript">
+
+var SERVER = "http://415vik.aquinas.hostingrails.com/";
+// var SERVER = "http://localhost:3000/";
+// -----------------------------------------------------------------------------------------------------------
+//  Variables - View layout static
+// -----------------------------------------------------------------------------------------------------------
+var Z_TERRAIN = 1;
+var Z_AREA_ELEMENT = 2;
+var Z_UNIT = 3;
+var Z_HEALT = 4;
+var Z_SELECT = 5;
+var Z_POSSIBLE_ORDER =5;
+var Z_ORDER = 6;
+var Z_OPACITY_LAYER = 100;
+
+// -----------------------------------------------------------------------------------------------------------
+//  Variables - View layout dynamic
+// -----------------------------------------------------------------------------------------------------------
+
+var _pgsb = null;
+var tic = null;
+var ptb = null;
+var pnt = null;
+var ordersSendStatus = "<%= @orders_send_status  %>";
+var isNextTurn = false;
+
+var image_handler = null;
+var selectedHexIndex = 0;
+
+var battleReport = null; // Model
+var areas = null; // Model
+var historyData = null; // Model
+
+var users_name = eval(<%=@get_users_name_json %>);
+
+var expenses = eval(<%=@expenses%>); // Model
+var income = eval(<%=@income%>);
+var current_user_ask_for_peace = <%= @current_user_ask_for_peace %>;
+
+var HOST_NAME = "<%=@host_name %>"; // Model, Static
+var REGION_NAME = "<%=@the_region_name %>"; // Model, Static
+var REGION_DESCRIPTION = "<%=@the_region_description %>"; // Model, Static
+var OPEN_REGIONS = eval(<%=@the_open_regions_json %>); // Model, Static, Array
+var DURATION_BETWEEN_TURNS = <%= @duration_between_turns %>;
+
+var hexMap = null;
+var hexMapView = null;
+
+var _gs = null; // The GameSession Model
+var _gsv = null; // The GameSession View
+var _gsc = null; // The GameSession Controller
+var _resourcesCollection = null;
+
+var _gsState = "<%=@game_session_state%>"; // Model
+var _gsName = "<%= @gs.name %>"; // Model
+var _gsLevel = "<%= @gs.level %>"; // Model
+
+var _currentUserName = "<%= @the_users_name[@the_user_id]  %>";
+var _currentUserId = <%= @the_user_id %>;
+var _currentUserState = "<%= @current_user_state %>";
+
+var _unitWithCargo = null;
+var _unitInCargo = null;
+
+var _turnNumber = <%= @current_turn_number %>;
+var _latestTurnEndedAt = <%=@latest_turn_ended_at %>;
+var _userStatues = $H(eval(<%= @users_status %>));
+var _isBattleReportMode = false;
+var _statistics = eval(<%=  @statistics_data_table_json %>);
+var _cookieName = "Battle"+ "<%=@gs.id %>";
+var _cookie = null;
+var _gssWaitingForOrders = eval(<%= game_sessions_your_move.to_json %>);
+var _isMouseDown = false
+var _hasBeenDragged = false;
+
+</script>
+
+    <div id="popup_optionsbox"></div>
+    <div id="popup_yesnobox"></div>
+    <div id="popup_nextturnbox"></div>
+    <div id="popup_textbox"></div>
+    <div id="popup_selection_list"></div>
+    <div id="popup_game_sessions_list"></div>
+    <div id="popup_killed_peace_box"></div>
+    <div id="lazy_loading"></div>
+
+    <div id="javascriptdata">some text</div>
+    <div id="status_data_id">more text</div>
+    <div id="battlereportdata">even more text</div>
+    <div id="historydata">the last text</div>
+    
+<div id="clipping"  onmousedown="return mouseDown(event);" onmouseup="return mouseUp(event);"  onmousemove="return mouseMove(event);">
+  <div id="map_controller">
+    <img id="map_controller_map_reset_icon" src="/images/32x32/map_reset.png" title="Reset the map location" onclick="buttonResetMapLocation();"></img>
+    <div id="map_controller_hex_index">Hex (..., ...)</div>
+  </div>  
+  <div id="info_box_parent"></div>
+  <div id="order_box_panel_parent"></div>
+  <div id="center_id">
+     <div id="overlayimage" onmousedown="return mouseDown(event);" onmouseup="return mouseUp(event);"  onmousemove="return mouseMove(event);">
+        <script type="text/javascript">
+          document.write ("<img src='/images/32x32/transpng.png' style='position: relative; left: "+x_graphic_offset+"; top: "+y_graphic_offset+"; z-index: "+Z_IMAGE_MAP+" '  width='<%=@w_canvas %>' height='<%=@h_canvas %>' border='0' usemap='#imagemap'/>");
+        </script>
+    </div>
+</div>
+</div>
+
+<map name="imagemap">
+    <%= @image_map %>
+</map>
+
+<script type="text/javascript">
+// -----------------------------------------------------------------------------------------------------------
+// "Model" Helper function
+// -----------------------------------------------------------------------------------------------------------
+
+// GameSession Model
+// function getNameOfActiveUsers(theUsersStatus) {
+//  var nameOfActiveUsers = new Array();
+//  theUsersStatus.each(function(pair) {
+//    var userStatus = pair.value;
+//
+//    if (userStatus[2] == "active" ) {
+//      nameOfActiveUsers.push(users_name.get(pair.key));
+//    }
+//  });
+//
+//  return nameOfActiveUsers;
+// }
+
+function update_resources(expenses, income) {
+    var theResources = _resourcesCollection.getResources();
+    var theBuildExpenses = _resourcesCollection.getTotalExpenses();
+    $("resources").update("Gold: "+theResources+" <br />(<span id='income'>Income: "+income+"</span> / <span id='expenses'>Upkeep: "+expenses+",  Build cost: "+theBuildExpenses+"</span>)")
+}
+
+function updateGame() {
+    var index_ele = document.getElementById("javascriptdata");
+    index_ele.normalize();
+    var index_text_ele = index_ele.firstChild;
+    var java_scrip_data = index_text_ele.data;
+
+    if (java_scrip_data == "waiting to recive all orders" ) {
+        ordersSendStatus = "sent";
+        tic.setOrdersSendStatus(ordersSendStatus);
+
+        // transparentOverlay,show();
+        ptb.updateAndShow(
+          "Orders sent","1.0em",
+          "Your orders have been sent. Please wait until orders have been recived from all players, or the time runs out.", "1.0em",
+          "left",
+          "button_textbox_close();");
+
+        hexMapView.removeHighlightedHexes();
+
+    } else if (java_scrip_data == "orders already recived") {
+        ptb.updateAndShow(
+          "Orders recived a second time","1.0em",
+          "It is not possible to send orders two times in the same turn.", "1.0em",
+          "left",
+          "button_textbox_close();");
+
+    } else if (java_scrip_data == "client/server turn desync") {
+        ptb.updateAndShow(
+          "Orders recived too late","1.0em",
+          "Your orders came just too late, someone pressed next turn just before you send your orders.", "1.0em",
+          "left",
+          "button_textbox_close();");
+
+    } else if (java_scrip_data == "non" ) {
+
+    } else { // if (isNextTurn == false) {
+        // next_turn();
+        var javascriptdataEle = $("javascriptdata");
+        javascriptdataEle.normalize();
+        var javascriptdataEleText = javascriptdataEle.firstChild;
+        var allData =  eval("("+javascriptdataEleText.data+")");
+        battleReportSetGameTurnData(eval(allData[0]), eval(allData[1]));
+
+        var ctgd = battleReport.model.currentTurnGameData;
+        var newTurnNumber = eval(ctgd[0]);
+        if (newTurnNumber > _gs.getTurn()) {
+          isNextTurn = true;
+        }
+
+        if (newTurnNumber > 2) {
+          if (!_isBattleReportMode) {
+            pnt.setHeaderText("Turn","1.0em");
+            pnt.setBodyText(""+(newTurnNumber), "10.0em");
+            pnt.setBodyTextAlignment("center");
+            pnt.update_button_list();
+            pnt.show();
+          }
+        } else {
+          updateTurn();
+        }
+        checkStatus();
+    }
+}
+
+function battleReportSetGameTurnData(currentTurnGameData, formerTurnGameData) {
+  battleReport.model.currentTurnGameData = currentTurnGameData;
+  battleReport.model.historyGameData = formerTurnGameData;
+}
+
+function battleReportDataRecived() {
+  var historyDataEle = $("historydata");
+  historyDataEle.normalize();
+  var historyDataTextEle = historyDataEle.firstChild;
+  historyData = eval("("+historyDataTextEle.data+")");
+  battleReport.model.orderQuery = historyData[0];
+  battleReport.model.allVisibleUnits = new UnitCollection(unitTypes,historyData[1]);
+
+  // setGameData(battleReport.model.historyGameData);
+  battleReport.model.allVisibleAreaElements = new AreaElementCollection(areaElementTypesArray, historyData[2]);
+
+
+  obtainBattleReport();
+}
+
+function obtainBattleReport() {
+  pbrcb.button_go_to_start();
+}
+
+function setStatics(theStatics) {
+  _statistics = $A(theStatics);
+  pob.setNumOfCities( _statistics);
+}
+
+function setGameData(gameDataJSON) {
+  _turnNumber = eval(gameDataJSON[0]);
+  _gs.setTurn(_turnNumber);
+  _latestTurnEndedAt = eval(gameDataJSON[1]);
+
+  visible_hexs = eval(gameDataJSON[2]);
+  hexMapView.setVisibleHexs(visible_hexs);
+
+  areaElementsArray = eval("("+gameDataJSON[3]+")"); // Model
+  this.hexMap.areaElements.setAreaElements(areaElementsArray);
+  hexMapView.setAreaElements(this.hexMap.areaElements);
+
+  units_array = eval("("+gameDataJSON[4]+")"); // Model
+  this.hexMap.units.setUnits(units_array);
+  // hexMapView.setUnits(this.hexMap.units);
+
+  resources = eval("("+gameDataJSON[5]+")"); // Model
+  _resourcesCollection.setResources(resources);
+
+  income = eval("("+gameDataJSON[6]+")"); // Model
+  expenses = eval("("+gameDataJSON[7]+")"); // Model
+  _gsState = gameDataJSON[8]; // Model
+  // setUserStatues($H(gameDataJSON[10])); // Model
+  setStatics(eval("("+gameDataJSON[10]+")")); // Model
+}
+
+// -----------------------------------------------------------------------------------------------------------
+//  Controller -  Order functions
+// -----------------------------------------------------------------------------------------------------------
+function reloadThisPage() {
+  window.location="<%= url_for :controller => 'main', :action => 'index', :only_path => false%>";
+}
+
+function reloadGameSessions() {
+  window.location="<%= url_for :controller => 'game_sessions', :action => 'index', :only_path => false%>";
+}
+
+// -----------------------------------------------------------------------------------------------------------
+//  View -  Specific functions
+// -----------------------------------------------------------------------------------------------------------
+function setUpPopupBoxes() {
+    _pgsb = new PopupGameSessionsBox(
+        "popup_game_sessions_list",
+        "Orders plz!",
+        "the_body_txt",
+        "black_opacity_50_32x32.png");
+
+     // ptb = new PopupTextBox(
+     //   "popup_textbox_main",
+     //   "popup_textbox",
+     //   "Orders Sent",
+     //   "Your orders have been send. Please wait unit orders have been recived from all players, or time runs out.",
+     //   30000,
+     //   "black_opacity_50_32x32.png");
+
+    plsb = new PopupListSelectionBox(
+        "build_unit_list_selection_popup",
+        "popup_selection_list",
+        "Select unit to build",
+        "The unit will ... ",
+        30000,
+        "black_opacity_50_32x32.png",
+        unitTypes,
+        user_colors[user_id]);
+
+    // pynb = new PopupYesNoBox (
+    //   "popup_yesno",
+    //   "popup_yesnobox",
+    //   "Yes or No",
+    //   "Yes or No?",
+    //   30000,
+    //   "black_opacity_50_32x32.png",
+    //   "Yes",
+    //   "No",
+    //   "button_yes_do_send_orders",
+    //   "button_no_do_not_send_orders");
+
+    // the_current_game_state, the_current_user_state, the_user_names, the_num_of_cthe_region_name,
+    // the_z_index, the_bg_image_name, the_apply_callback_fkt_name, the_cancel_callback_fkt_name
+    ptb = new PopupTextBox(
+        "popup_textbox_main",
+        "popup_textbox",
+        "Orders Sent",
+        "Your orders have been send. Please wait unit orders have been recived from all players, or time runs out.",
+        30000,
+        "black_opacity_50_32x32.png");
+
+    pnt = new PopupYesNoBox (
+        "popup_nextturn",
+        "popup_nextturnbox",
+        "Next Turn header",
+        "Next Turn body",
+        31000,
+        "black_opacity_50_32x32.png",
+        "Battle Report",
+        "Skip",
+        "button_yes_see_battle_report",
+        "button_no_skip_battle_report");
+
+    pbrcb = new PopupBattleReportControllerBox (
+        "battle_report_controller",
+        "battle_report_controller_view",
+        "pbrcb",
+        battleReport,
+        hexMapView,
+        "Battle Report",
+        "The Body Text",
+        3000,
+        "black_opacity_50_32x32.png"
+    );
+
+   // pkpib = new PopupKilledPeaceInfoBox (
+   //     "popup_killed_peace_box_main",
+   //     "popup_killed_peace_box",
+   //     "",
+   //     "",
+   //     30000,
+   //     "black_opacity_50_32x32.png");
+}
+
+function draw() {
+    hexMapView.draw();
+
+    if ((ordersSendStatus == "sent") || (_currentUserState == "killed")) {
+      hexMapView.removeHighlightedHexes();
+    } else {
+      hexMapView.showHighlightedHexes();
+    }
+
+    hexMapView.fogOfWarOn();
+}
+
+
+function on_image_preload(images, num_images) {
+   draw();
+   checkStatus();
+
+    if (_gs.getState() == GameSessionModel.GS_STATES.Starting) {
+      game_starting();
+    } else if (_gs.getState() == GameSessionModel.GS_STATES.Active) {
+      periodacllly_check_status();
+      imPeriodaclllyCheckStatus();
+      get_game_data();
+    } else if (_gs.getState() == GameSessionModel.GS_STATES.Ended) {
+      game_ended();
+    } else if (_gs.getState() == GameSessionModel.GS_STATES.Peace) {
+      game_ended_in_peace();
+    }    
+}
+
+// -----------------------------------------------------------------------------------------------------------
+// Main function
+// -----------------------------------------------------------------------------------------------------------
+function main() {
+      llo = new LazyLoadingOverlay(
+        "lazy_loading",
+        "",
+        "fixed",
+        "black_opacity_50_32x32.png",
+        200, 380,
+        0, 0, window.innerWidth, window.innerHeight, 0
+    );
+    llo.show();
+
+    // newTurnNumber = _turnNumber;
+
+    _gs = new GameSessionModel(
+        parseGSStatus(),
+        _gsLevel,
+        _turnNumber,
+        _latestTurnEndedAt,
+        users_name,
+        _currentUserId,
+        _currentUserName
+    );
+
+    _gsv = new GameSessionView();
+    _gsc = new GameSessionController(_gs,_gsv);
+
+    pob = new PopupOptionsBox (
+        "popup_options",
+        "popup_optionsbox",
+        _gsName, // The header
+        REGION_DESCRIPTION, // The options body text
+        _currentUserState,
+        _userStatues,
+        users_name,
+        _statistics,
+        REGION_NAME,
+        HOST_NAME,
+        DURATION_BETWEEN_TURNS,
+        _currentUserName,
+        user_colors,
+        30000,
+        "black_opacity_50_32x32.png",
+        "button_options_apply",
+        "button_options_cancel");
+        
+    hexMap = new HexMapModel(
+      new AreaCollection(terrains_array, areas_array),
+      new UnitCollection(unitTypes,unitsArray),
+      new AreaElementCollection(areaElementTypesArray, areaElementsArray)
+    );
+    
+    _resourcesCollection = new ResourcesCollectionModel(resources, this.hexMap.areaElements, this.hexMap.units);
+
+    image_handler = loadImages();
+
+    hexMapView = new HexMapView(
+      user_id,
+      "center_id",
+      hexMap,
+      w_hex,
+      h_hex,
+      w_hex_map,
+      h_hex_map,
+      w_canvas,
+      h_canvas,
+      h_sqr_to_hex_conner,
+      x_graphic_offset,
+      y_graphic_offset,
+      visible_hexs,
+      unit_selected_image_name,
+      opacity_image_name,
+      opacity_second_overlay_image_name,
+      image_handler,
+      user_colors
+    );
+
+    infoBox = new InfoBox("info_box_parent", hexMap, hexMapView, image_handler);
+    battleReport = new BattleReport(hexMap, hexMapView);
+    // battleReportView = new BattleReportView(battleReport, hexMapView);    
+
+    tic = new NextTurnButton("button_next_turn_parent_id",ordersSendStatus, _gs.getTurn(), _latestTurnEndedAt, DURATION_BETWEEN_TURNS);
+    usc = new UserStatusContainer("users_status_id", HOST_NAME, _currentUserName, users_name, user_colors);
+
+    update_resources(expenses, income);
+
+    setUpPopupBoxes();
+
+    ensureCookie();
+    
+    llo.hide();
+}
+
+function parseGSStatus() {
+  if (_gsState == "STARTING") {
+    return GameSessionModel.GS_STATES.Starting;
+  } else if (_gsState == "ACTIVE") {
+    return GameSessionModel.GS_STATES.Active;
+  } else if (_gsState == "ENDED") {
+    return GameSessionModel.GS_STATES.Ended;
+  } else if (_gsState == "PEACE") {
+    return GameSessionModel.GS_STATES.Peace;
+  }
+}
+
+function ensureCookie() {
+    if (Cookie.doCookieExists(_cookieName) == false) {
+      // Create a cookie which live for a month
+      _cookie = Cookie.createCookie(_cookieName, "", 60*60*24*30);
+    } else {
+      _cookie = Cookie.uptainCookie(_cookieName, 60*60*24*30);
+    }  
+}
+// function battle_report_recived() {
+//  var battle_report_data = $("battlereportdata");
+// }
+
+
+function updateTurn() {
+  _resourcesCollection.removeAllExpense();
+  setGameData(battleReport.model.currentTurnGameData);
+  update_resources(expenses,income);
+  
+  if (isNextTurn) {
+    nextTurn();
+    isNextTurn = false;
+  } else {
+    updateDataAndView();
+  }
+}
+
+function nextTurn() {
+  ordersSendStatus = "not send";
+  updateDataAndView();
+  tic.set_current_turn(_gs.getTurn(), _latestTurnEndedAt);
+}
+
+function updateDataAndView() {  
+  hexMapView.setSemiVisibleHexs(null);
+  hexMapView.update();
+
+  if (ordersSendStatus == "sent") {
+    hexMapView.removeHighlightedHexes();
+  }
+}
+
+
+function game_starting () {
+  hexMapView.removeHighlightedHexes();
+  clearInterval(status_interval_id);
+  clearImInterval();
+
+  // ptb.setHeaderText("This Battle has not started yet","1.0em");
+  // ptb.setBodyText( "Please wait for the remaining players to join.", "1.0em");
+  // ptb.setBodyTextAlignment("left");
+  // ptb.show();
+  periodacllly_check_status();
+  imPeriodaclllyCheckStatus();
+
+  pob.show(current_user_ask_for_peace, _currentUserState);
+}
+
+function game_ended() {
+  hexMapView.removeHighlightedHexes();
+  clearInterval(status_interval_id);
+  clearImInterval();
+
+  // _gsc.gameEnded();
+  
+//  ptb.updateAndShow(
+//    "This Battle has come to an end","1.0em",
+//    "The battele has ended, go pick a new fight", "1.0em",
+//    "left",
+//    "button_textbox_close();");
+
+}
+
+
+function game_ended_in_peace() {
+  hexMapView.removeHighlightedHexes();
+  clearInterval(status_interval_id);
+  clearImInterval();
+
+  // ptb.updateAndShow(
+  //  "This Battle has ended in peace","1.0em",
+  //  "This battele has ended in peace.", "1.0em",
+  //  "left",
+  //  "button_textbox_close();");
+}
+
+function set_current_user_is_killed() {
+  _currentUserState = "killed";
+  if (hexMapView != null) {
+    hexMapView.removeHighlightedHexes();
+  }
+}
+
+function set_current_turn (the_current_turn) {
+    if (the_current_turn > _gs.getTurn()) {
+        _turnNumber = the_current_turn;
+        _gs.setTurn(_turnNumber);
+        isNextTurn = true;
+        
+        get_game_data();
+    }
+}
+
+
+// -----------------------------------------------------------------------------------------------------------
+//  Game Session Status
+// -----------------------------------------------------------------------------------------------------------
+
+var status_interval_id = null;
+function periodacllly_check_status() {
+    status_interval_id = setInterval(checkStatus, 30000);   // 30 sec
+}
+
+function checkStatus() {
+    <%= remote_function(:url => { :action => 'status', :controller => 'main'}, :update => "status_data_id", :complete => "updateStatus();") %>;
+}
+
+function updateStatus() {
+    $(status_data_id).normalize();
+    var the_status_data_json = $(status_data_id).firstChild.data;
+
+    var the_status_data =  eval("("+the_status_data_json+")");
+    set_current_turn(the_status_data[0]);
+
+    var oldGameSessionState = _gs.getState();
+
+    // If the status of the game session is moving from STARTING to ACTIVE, then
+    // start the count down timer.
+    if ((_gs.getState() == GameSessionModel.GS_STATES.Starting) &&
+        (the_status_data[1] == "ACTIVE")) {
+      tic.startTimer();
+    }
+
+    _gsState = the_status_data[1];
+    _gs.setState(parseGSStatus());
+    if (_gs.getState() == GameSessionModel.GS_STATES.Ended) {
+      game_ended();
+    } else if (_gs.getState() == GameSessionModel.GS_STATES.Peace) {
+      game_ended_in_peace();
+    }
+
+    if ((oldGameSessionState == GameSessionModel.GS_STATES.Starting) && (_gs.getState() == GameSessionModel.GS_STATES.Active)) {
+      hexMapView.showHighlightedHexes();
+      window.location.reload();
+    }
+
+    users_name = $H(the_status_data[2]);
+    usc.setUsersName(the_status_data[2]);
+
+    setUserStatues($H(the_status_data[3]));
+
+	_gssWaitingForOrders = $A(eval(the_status_data[4]));
+	if (_gssWaitingForOrders.size() > 0) {
+		$('main_header_wait_for_orders').show();
+	} else {
+		$('main_header_wait_for_orders').hide();
+	}
+	
+	
+    _currentUserState = the_status_data[5];
+}
+
+function setUserStatues(theUserStatues) {
+//  statusNotifications(_userStatues, theUserStatues);
+  
+  _userStatues = theUserStatues;
+  _gs.setUsersState(_userStatues);
+  usc.setUsersStatus(_userStatues);
+  pob.setUsersState(_userStatues);
+}
+
+// Setting the view parameters related to status changes
+// function statusNotifications(oldStatus, newStatus) {
+// if (oldStatus != null) {
+//   statusNotification = _gs.getUserStatusChanges(oldStatus, newStatus);
+//
+//    if (statusNotification == "joined") {
+//      ptb.updateAndShow(
+//        "Welcome to the battle!", "1.0em",
+//        "Weclome to the battle, it will start as soon as all players have joined.", "1.0em",
+//        "left", "button_textbox_close();");
+//
+//    } else if (statusNotification == "removed") {
+//      ptb.updateAndShow(
+//        "You are not in the battle anymore!", "1.0em",
+//        "Host have either closed the battle or removed you from it.", "1.0em",
+//        "left", "buttonBackToGameSessions();");
+//
+//    } else if (statusNotification == "reload") {
+//      window.location.reload();
+//
+//    }
+//  }
+//
+//  var winner = _gs.getWinner(newStatus);
+//  if (winner == null) { // Seems we do NOT have a winner
+//    var notifications = _gs.getKilledPeaceNotifications(newStatus);
+//    pkpib.showNotifications(notifications, _gs.getNameOfCurrentUser())
+//
+//  } else if (winner == _gs.getNameOfCurrentUser()) { // Seems we have a winner, is it the currently active user?
+//    pkpib.showWinner();
+//  } else { // Seems we have a winner and it is not the current user
+//    pkpib.showLooser();
+//  }
+// }
+
+// Element Selected Cursor
+// **************************
+
+// Privat
+// Renamed: set_element_indi_selected --> showElementSelectedIndicator
+function set_element_indi_selected(the_index) {
+    var x_loc = hexMap.getHexX(the_index);
+    var y_loc = hexMap.getHexY(the_index, x_loc);
+    var x = hexMapView.getAreaPixelX(x_loc, y_loc);
+    var y = hexMapView.getAreaPixelY(y_loc);
+
+    unit_indi_selected_image.style.left = ""+(x+x_graphic_offset);
+    unit_indi_selected_image.style.top = ""+(y+y_graphic_offset);
+
+    unit_indi_selected_image.style.zIndex = ""+(Z_SELECT+Z_OPACITY_LAYER);
+
+    unit_indi_selected_image.style.visibility = "visible";
+}
+
+// -----------------------------------------------------------------------------------------------------------
+//  Controller - Retrive Data
+// -----------------------------------------------------------------------------------------------------------
+
+function get_game_data() {
+    <%= remote_function(:url => { :action => 'get_game_data', :controller => 'main'}, :update => "javascriptdata", :complete => "updateGame();") %>;
+}
+
+// function get_battle_report() {
+//    <%= remote_function(:url => { :action => 'get_battle_report', :controller => 'main'}, :update => "battlereportdata", :complete => "battle_report_recived();") %>;
+// }
+
+function getHistoryData() {
+    llo.show();
+    <%= remote_function(:url => { :action => 'get_history', :controller => 'main'}, :update => "historydata", :complete => "llo.hide(); battleReportDataRecived();") %>;
+}
+
+
+// -----------------------------------------------------------------------------------------------------------
+//  Controller -  Order functions
+// -----------------------------------------------------------------------------------------------------------
+
+// Privat
+// TODO: Is it possible to compine add_move_order and create_attack_order into one function
+function add_move_order(the_unit, the_dest_hex_index) {
+    var the_from_hex_index = null;
+    if (this.hexMap.units.doUnitHaveOrder(the_unit)) {
+        the_from_hex_index = this.hexMap.units.getUnitDestHexOfLastOrder(the_unit);
+    } else {
+        the_from_hex_index = this.hexMap.units.getUnitLocationHexIndex (the_unit);
+    }
+
+    this.hexMap.units.addUnitOrder(the_unit, "move", the_from_hex_index, the_dest_hex_index);
+
+    var the_unit_id = this.hexMap.units.getUnitId(the_unit);
+    var the_order_index = this.hexMap.units.getUnitNumberOfOrders(the_unit) - 1;
+    hexMapView.drawOrder("move", the_from_hex_index, the_dest_hex_index, the_unit_id, the_order_index, 0);
+}
+
+// Privat
+function create_attack_order (the_unit, the_dest_hex_index)  {
+    var the_from_hex_index = null;
+    if (this.hexMap.units.doUnitHaveOrder(the_unit)) {
+        the_from_hex_index = this.hexMap.units.getUnitDestHexOfLastOrder(the_unit);
+    } else {
+        the_from_hex_index = this.hexMap.units.getUnitLocationHexIndex (the_unit);
+    }
+
+    this.hexMap.units.addUnitOrder(the_unit, "attack", the_from_hex_index, the_dest_hex_index);
+
+    var the_unit_id = this.hexMap.units.getUnitId(the_unit);
+    var the_order_index = this.hexMap.units.getUnitNumberOfOrders(the_unit) - 1;
+    hexMapView.drawOrder("attack", the_from_hex_index, the_dest_hex_index, the_unit_id, the_order_index, 0);
+}
+
+function addRaidOrder(theDestHex) {
+  var theSelectedUnit = hexMapView.getSelectedUnit();
+  var fromHex = this.hexMap.units.getUnitLocationHexIndex(theSelectedUnit);
+  var theUnitId = this.hexMap.units.getUnitId(theSelectedUnit);
+
+  this.hexMap.units.addUnitOrder(theSelectedUnit, "raid", fromHex, theDestHex);
+  var theOrderIndex = this.hexMap.units.getUnitNumberOfOrders(theSelectedUnit) - 1;
+  
+  hexMapView.drawOrder("raid", fromHex, theDestHex, theUnitId, theOrderIndex, 0);
+  hexMapView.removeIndicatorPossibleOrder();
+}
+
+function addUpgradOrder() {
+  var theSelectedUnit = hexMapView.getSelectedUnit();
+  var fromHex = this.hexMap.units.getUnitLocationHexIndex(theSelectedUnit);
+  var theUnitId = this.hexMap.units.getUnitId(theSelectedUnit);
+  var areaElement = this.hexMap.areaElements.getAllAreaElementsAtHexIndex(fromHex);
+  
+  this.hexMap.units.addUnitOrder(theSelectedUnit, "upgrad", fromHex, fromHex);
+  var theOrderIndex = this.hexMap.units.getUnitNumberOfOrders(theSelectedUnit) - 1;
+  hexMapView.drawOrder("upgrad", fromHex, fromHex, theUnitId, theOrderIndex, 0);
+
+  hexMapView.removeIndicatorPossibleOrder();
+
+  _resourcesCollection.addUpgradExpense(areaElement);
+  update_resources(expenses,income);  
+}
+
+// Privat
+function remove_orders (the_unit) {
+    var the_unit_id = this.hexMap.units.getUnitId(the_unit);
+    var num_of_orders = this.hexMap.units.getUnitNumberOfOrders(the_unit);
+    for (var the_order_index = 0; the_order_index < num_of_orders; the_order_index++) {
+      hexMapView.removeOrderImage(the_unit_id, the_order_index);
+      
+      if (this.hexMap.units.getUnitOrderTypeByIndex(the_unit, the_order_index) == "upgrad") {
+        removeUpgradOrder (the_unit);
+      }
+    }
+    this.hexMap.units.removeUnitOrders(the_unit);
+}
+
+function removeUpgradOrder(theUnit) {
+  var hex = this.hexMap.units.getUnitLocationHexIndex (theUnit);
+  var areaElement = this.hexMap.areaElements.getAllAreaElementsAtHexIndex(hex);
+  _resourcesCollection.removeUpgradExpense(this.hexMap.areaElements.getAreaElementId(areaElement));
+  update_resources(expenses,income);
+}
+
+// Public
+// Renamed: delete_selected_unit_orders --> deleteOrdersOfSelectedUnit
+function delete_selected_unit_orders () {
+    var selected_unit = hexMapView.getSelectedUnit();
+    if ((selected_unit != null) && (this.hexMap.units.getUnitNumberOfOrders(selected_unit) > 0)) {
+         hexMapView.removeIndicatorPossibleOrder();
+         remove_orders (selected_unit);
+
+         if (this.hexMap.units.getUnitMovePointsLeft(selected_unit) > 0) {
+            var the_hex_index = this.hexMap.units.getUnitLocationHexIndex (selected_unit);
+            var the_selected_unit_type =  this.hexMap.units.getUnitType(selected_unit);
+            hexMapView.setPossibleActionIndicator(the_hex_index, the_selected_unit_type, selected_unit)
+         }
+    } else {
+        // TODO: NO UNIT SELECTED ALERT
+    }
+}
+
+// Public
+// Renamed: create_order --> createOrder
+function create_order (the_unit, the_hex_index) {
+    var selected_unit = hexMapView.getSelectedUnit();
+    // If there is a unit in the selected hex it will be an attack order otherwise an move order
+    if (this.hexMap.units.isUnitsInHex(the_hex_index)) {
+        var the_units_in_hex = this.hexMap.units.getAllUnitsAtHexIndex(the_hex_index);
+        var the_unit_in_dest_hex =  the_units_in_hex[0];  // NEEDS TO BE UPDATED FOR GAMES WITH MORE THAN ONE UNIT PR. HEX
+
+        // Do the unit belong to the current player
+        if (user_id ==  this.hexMap.units.getUnitUserId(the_unit_in_dest_hex) ) {
+            add_move_order(selected_unit, the_hex_index);
+        } else {
+            create_attack_order(selected_unit, the_hex_index);
+        }
+    } else if (this.hexMap.areaElements.isAreaElementsAtHexIndex(the_hex_index)) {
+        var the_area_element_in_hex = this.hexMap.areaElements.getAllAreaElementsAtHexIndex(the_hex_index);
+
+        if ((this.hexMap.areaElements.getAreaElementUserId(the_area_element_in_hex) == user_id) || (this.hexMap.areaElements.getAreaElementUserId(the_area_element_in_hex) == null)) {
+            add_move_order(selected_unit, the_hex_index);
+        } else {
+            create_attack_order(selected_unit, the_hex_index);
+        }
+    } else {
+        add_move_order(selected_unit, the_hex_index);
+    }
+
+     // Is it possible for the unit to recive more move orders
+     if (this.hexMap.units.getUnitMovePointsLeft(selected_unit) > 0) {
+        hexMapView.removeIndicatorPossibleOrder();
+
+        var hexes_within_range =  hexMap.getHexesWithinRange(the_hex_index, this.hexMap.units.getUnitType(selected_unit), selected_unit, 1,this.hexMap.units.isUnitPossibleToMove); // TODO check if this call should be to hexMapView and not hexMap.
+        hexMapView.setHexesWithinRange(hexes_within_range);
+        replace_value_in_array (this.hexMap.units.getUnitLocationHexIndex(selected_unit), null, hexes_within_range);
+        hexMapView.setIndicatorPossibleOrder(hexes_within_range,the_hex_index, false);
+     }  else {
+        hexMapView.removeIndicatorPossibleOrder();
+     }
+ }
+
+// Public
+// Renamed: create_area_element_order --> createOrderOfSelectedAreaElement
+function create_area_element_order(the_order_type, the_action) {
+    var selected_area_element = hexMapView.getSelectedAreaElement();
+    if (selected_area_element) {
+        this.hexMap.areaElements.addAreaElementOrder(selected_area_element, the_order_type, the_action);
+
+        if (the_order_type == "build") {
+          _resourcesCollection.addExpense(selected_area_element, the_action);
+          update_resources(expenses,income);
+        }
+    }
+}
+
+// Public
+// Renamed: remove_area_element_orders() --> deleteOrdersOfSelectedAreaElement
+function remove_area_element_orders() {
+    var selected_area_element = hexMapView.getSelectedAreaElement();
+    if (this.hexMap.areaElements.getAreaElementNumberOfOrders(selected_area_element) > 0) {
+      this.hexMap.areaElements.removeAreaElementOrders(selected_area_element);
+      _resourcesCollection.removeExpense(this.hexMap.areaElements.getAreaElementId(selected_area_element));
+      update_resources(expenses,income);
+    }
+    
+}
+
+// -----------------------------------------------------------------------------------------------------------
+// Send Orders
+// -----------------------------------------------------------------------------------------------------------
+//Call back failed
+function sendOrdersFailed() {
+  ptb.updateAndShow (
+    "Your orders were never recived!","1.0em",
+    "Seems something went wrong, e.g. your messenger was killed, became drunk or your men could not read your runes. Sorry, but you will have to try again.", "1.0em",
+    "left",
+    "button_textbox_close();");
+    
+  tic.setOrdersSendStatus("not send");
+}
+
+function sendOrdersSucced() {
+  tic.setOrdersSendStatus("sent");
+  ordersSendStatus = "sent";
+  updateGame();
+}
+
+function getOrders() {
+  return this.hexMap.units.getUnitsOrderToString(user_id) + this.hexMap.areaElements.getAreaElementsOrderToString(user_id);
+}
+
+function sendOrders(the_orders) {
+  hexMapView.deselectUnit();
+  var the_params = "current_turn ="+encodeURIComponent(""+_gs.getTurn()) + "&orders = "+encodeURIComponent(the_orders);
+
+  <%= remote_function(:url => { :action => 'save_orders', :controller => 'main'}, :with => :the_params, :update => "javascriptdata", :failure => "sendOrdersFailed();", :complete => "sendOrdersSucced(); checkStatus();") %>;
+  tic.setOrdersSendStatus("sending");
+
+
+
+}
+
+// -----------------------------------------------------------------------------------------------------------
+// Controller - Event Handler
+// -----------------------------------------------------------------------------------------------------------
+
+// Buttons
+// ***************************
+function button_delete_order_event() {
+    delete_selected_unit_orders();
+}
+
+function button_end_turn() {
+    if ((_currentUserState == "active") && (_gs.getState() == GameSessionModel.GS_STATES.Active)) {
+      var the_params = "current_turn ="+encodeURIComponent(""+_gs.getTurn()) + "&orders = "+encodeURIComponent(this.hexMap.units.getUnitsOrderToString(user_id) + this.hexMap.areaElements.getAreaElementsOrderToString(user_id));
+      <%= remote_function(:url => { :action => 'end_turn', :controller => 'main'}, :with => :the_params, :update => "javascriptdata", :complete => "updateGame();") %>;
+    } else {
+      ptb.updateAndShow(
+        "Not Possible!", "1.0em",
+        "It is not possible for you to take part in this battle.", "1.0em",
+        "left",
+        "button_textbox_close();");
+    }
+}
+
+function button_send_orders(){
+    if ((_currentUserState == "active")  && (_gs.getState() == GameSessionModel.GS_STATES.Active)) {
+      var the_orders = getOrders();
+      sendOrders(the_orders);        
+    } else {
+      ptb.updateAndShow(
+        "Not Possible!", "1.0em",
+        "It is currently not possible for you give orders in this battle. Go pick another fight.", "1.0em",
+        "left",
+        "button_textbox_close();");
+
+    }
+}
+
+function buttonSendReminder(thePlayerName) {
+    var theParams = "nameOfUser="+encodeURIComponent(thePlayerName);
+
+    <%= remote_function(
+        :url => { :action => 'send_reminder', :controller => 'main'},
+        :with => :theParams,
+        :complete => "checkStatus();")%>
+}
+
+function button_textbox_close() {
+    ptb.hide();
+}
+
+function button_selection_list_close() {
+    plsb.hide();
+}
+
+function button_selection_list_cancel_build() {
+    remove_area_element_orders();
+    plsb.hide();
+}
+
+function button_selection_list_build(name_of_unit_to_be_build) {
+    remove_area_element_orders();
+
+    if (name_of_unit_to_be_build != "nothing") {
+        create_area_element_order("build", name_of_unit_to_be_build);
+    }
+
+    plsb.hide();
+}
+
+// function button_yes_do_send_orders() {
+//  pynb.hide();
+//  sendOrders("");
+// }
+
+// function button_no_do_not_send_orders() {
+//  pynb.hide();
+// }
+
+function button_options_apply() {
+    pob.hide();
+
+    var doDropBattle = pob.getCheckboxValue("drop_battle");
+    var doJoin = pob.getCheckboxValue("join");
+    var doReject = pob.getCheckboxValue("reject");
+    var doSurrender = pob.getCheckboxValue("surrender");
+    var doPeace = pob.getCheckboxValue("peace");
+    
+    
+    if (doDropBattle != null) {
+      <%= remote_function(
+        :url => { :action => 'drop_battle', :controller => 'main'},
+        :complete => "reloadGameSessions();" )%>
+
+      return;
+    }
+
+    if (doJoin != null) {
+
+      if (_gs.isCurrentUserNew()) {
+        <%= remote_function( :url => { :action => 'new_user_joins', :controller => 'main'},
+        :complete => "reloadThisPage();" )%>
+        
+      } else {
+        <%= remote_function(
+          :url => { :action => 'invited_user_joins', :controller => 'main'},
+          :complete => "reloadThisPage();") %>;
+      }
+    }
+
+    if (doReject != null) {
+      <%= remote_function(
+        :url => { :action => 'invited_user_rejects', :controller => 'main'}, 
+        :complete => "reloadGameSessions();" )%>
+
+      return;
+    }
+
+    if (doSurrender != null) {      
+      <%= remote_function(
+        :url => { :action => 'surrender', :controller => 'main'},
+        :update => "status_data_id", :complete => "updateStatus();") %>;
+      hexMapView.removeHighlightedHexes();
+    }
+
+    var the_params = "do_ask_for_peace ="+encodeURIComponent("false");
+    if (doPeace != null) {
+      the_params = "do_ask_for_peace ="+encodeURIComponent("true");
+      <%= remote_function(:url => { :action => 'ask_for_peace', :controller => 'main'},
+        :update => "status_data_id", :complete => "updateStatus();", :with => :the_params) %>;
+    }
+       
+}
+
+function button_options_cancel() {
+    pob.hide();
+}
+
+function button_game_session_name() {
+    // if ((_currentUserState == "active") && (_gsState == "ACTIVE")){
+      pob.show(current_user_ask_for_peace, _currentUserState);
+    // } else {
+    //  ptb.setHeaderText("Not Possible!");
+    //  ptb.setBodyText("You are out of this battle. Move on!");
+    //  ptb.setBodyTextAlignment("left");
+    //  ptb.show();
+
+    // }
+}
+
+function button_battle_report() {
+  clearInterval(status_interval_id);
+  clearImInterval();
+  _isBattleReportMode = true;
+  $("button_next_turn_id").hide();
+  getHistoryData();
+  pbrcb.show();
+  
+}
+
+function button_yes_see_battle_report() {
+  pnt.hide();
+  button_battle_report();
+
+  // obtainBattleReport();
+
+}
+
+function button_no_skip_battle_report() {
+  pnt.hide();
+  updateTurn();
+}
+
+function button_game_sessions_box_show() {	
+	_pgsb.show(_gssWaitingForOrders);
+}
+
+function button_game_sessions_box_close() {
+	_pgsb.hide();
+}	
+
+function button_battle_report_controller_cancle() {
+  periodacllly_check_status();
+  imPeriodaclllyCheckStatus();
+  _isBattleReportMode = false;
+  // pbrcb.hide();
+  // battleReport.view.clearAll();
+  // updateTurn();
+  // $("button_next_turn_id").show();
+  var theThis = this;  
+  Effect.Fade($("battle_report_controller"),
+    { duration: 1.0,      
+      afterFinish: function() {
+        theThis.pbrcb.hide();
+        theThis.battleReport.view.clearAll();
+        theThis.updateTurn();
+        $("button_next_turn_id").show();        
+      }
+    });
+}
+
+function buttonInfoBoxCancle() {
+var htmlBase = "<div id='info_box' onclick='return infoBoxClick(event);'>Info</div>"
+$('info_box').update(htmlBase);
+$('info_box').morph('top:450px; width:50px; height:15px;');
+
+}
+function buttonDropPlayer(thePlayerName) {
+    var theParams = "nameOfUser="+encodeURIComponent(thePlayerName);
+
+    <%= remote_function(
+        :url => { :action => 'invited_user_rejects', :controller => 'main'},       
+        :with => :theParams,
+        :complete => "checkStatus();")%>
+
+}
+
+function buttonBackToGameSessions() {
+    ptb.hide();
+    reloadGameSessions();
+}
+
+function buttonResetMapLocation() {
+  $("center_id").setStyle("top: 0px; left: 0px;");
+}
+
+function selectUnitInCargo(aUnitInCargoIndex, theUnitWithCargoIndex) {
+    hexMapView.deselectUnit();
+
+    hexMapView.selecteUnitWithCargo = hexMap.units.getUnitWithID(theUnitWithCargoIndex);
+    hexMapView.selecteUnitInCargo = hexMap.units.getUnitWithID(aUnitInCargoIndex);
+    var hexIndex = hexMap.units.getUnitLocationHexIndex(hexMapView.selecteUnitWithCargo);
+    var xHex = hexMap.getHexX(hexIndex);
+    var yHex = hexMap.getHexY(hexIndex, xHex);
+    var healt = hexMap.units.getUnitHealt(hexMapView.selecteUnitInCargo);
+    var unitType = hexMap.units.getUnitType(hexMapView.selecteUnitInCargo)
+
+    hexMap.units.setUnitLocationHexIndex(hexMapView.selecteUnitInCargo, hexIndex);
+    
+    var imageName = "unit_"+hexMap.units.getUnitTypeName(unitType)+"_"+hexMapView.userColors[""+hexMap.units.getUnitUserId(hexMapView.selecteUnitInCargo)];
+
+    var theUnitImage = hexMapView.addBitmap(
+        "unitincargo",
+        hexIndex,
+        xHex, yHex, 0, 0,
+        hexMapView.imageHandler.images[imageName],
+        hexMapView.Z_UNIT+hexMapView.Z_RED_OPACITY_LAYER);
+           
+    hexMapView.selectUnit(hexMapView.selecteUnitInCargo);
+}
+
+// Mouse
+// **************************
+
+// rollover
+function r(the_index) {
+    if (hexMap == null) {
+      return true;
+    }
+    
+    var x = hexMap.getHexX(the_index);
+    var y = hexMap.getHexY(the_index, x);
+    domSetTextElementTextById("map_controller_hex_index", "Hex: ("+x+", "+y+") - ("+the_index+")");
+
+    if (<%= controller.action_name == "index" %>) {
+      infoBox.update(the_index);
+    }
+
+    return true;
+}
+
+// On Click
+function c(the_hex_index) {
+    if ((_isBattleReportMode) ||
+        (ordersSendStatus == "sent")||
+        (_currentUserState == "killed") ||
+        (_gsState == GameSessionModel.GS_STATES.Starting) ||
+        (_gs.getState() == GameSessionModel.GS_STATES.Ended))  {
+      return true;
+    }
+
+    var selected_unit = hexMapView.getSelectedUnit();
+    var selected_unit_hex_index = this.hexMap.units.getUnitLocationHexIndex(selected_unit);
+    var hexes_within_range = hexMapView.getHexesWithinRange();
+    var hexes_within_attack_range = hexMapView.getHexesWithinAttackRange();
+
+    // A unit is already selected and the same unit is selected again
+    if (selected_unit_hex_index == the_hex_index) {
+        delete_selected_unit_orders();
+    }
+
+    // A unit is already selected and the new selected hex is within range
+    else if ( (selected_unit != null) && (this.hexMap.units.getUnitMovePointsLeft(selected_unit) > 0) && ((value_in_array(the_hex_index,hexes_within_range)) || (value_in_array(the_hex_index,hexes_within_attack_range))) )  {
+         // The selected hex do NOT hold the current selected unit. The user must be creating either move or attack order.
+        if (selected_unit_hex_index != the_hex_index) {
+            // Are the user not selecting the hex to which he order the unit in a pervious order
+            if (the_hex_index != selectedHexIndex) {
+              create_order(selected_unit, the_hex_index);
+            }
+        } else {
+            delete_selected_unit_orders();
+        }
+    }
+
+    // A unit is already selected and the new selected hex is possible to raid
+    else if ( (selected_unit != null) && (this.hexMap.units.canUnitRaidHex(selected_unit, the_hex_index, this.hexMap.areaElements))) {
+      addRaidOrder(the_hex_index);
+    }
+        
+    // Is a new unit selected
+    else if  (this.hexMap.units.isUnitsInHex(the_hex_index))  {
+        var the_units_in_hex = this.hexMap.units.getAllUnitsAtHexIndex(the_hex_index);
+        var the_unit =  the_units_in_hex[0];  // NEEDS TO BE UPDATED FOR GAMES WITH MORE THAN ONE UNIT PR. HEX
+
+        // Do the unit belong to the current player
+        if (user_id ==  this.hexMap.units.getUnitUserId(the_unit) ) {
+            hexMapView.deselectUnit();
+            hexMapView.selectUnitFromIndex(the_hex_index);
+        }
+    }
+
+    // Is an AreaElementSelected
+    else if (this.hexMap.areaElements.isAreaElementsAtHexIndex(the_hex_index)) {
+        hexMapView.deselectUnit();
+
+        var the_selected_area_element = this.hexMap.areaElements.getAllAreaElementsAtHexIndex(the_hex_index);
+        if (user_id ==  this.hexMap.areaElements.getAreaElementUserId(the_selected_area_element) ) {
+             hexMapView.setAreaElementSelected(the_selected_area_element);
+        }
+    }
+
+    // No unit or Area Element is selected
+    else {
+        hexMapView.deselectUnit();
+        hexMapView.removeAreaElementSelected();
+    }
+
+    selectedHexIndex = the_hex_index;
+
+    return false;
+}
+
+function draggingStart(event) {
+    // var x = hexMap.getHexX(the_index);
+    // var y = hexMap.getHexY(the_index, x);
+    // domSetTextElementTextById("hex_index", "Draging:");
+    $("overlayimage").style.cursor="move";
+    _startScreenX = event.screenX;
+    _startScreenY = event.screenY;
+    return true;
+}
+
+function draggingEnd(event) {
+    // var x = hexMap.getHexX(the_index);
+    // var y = hexMap.getHexY(the_index, x);
+    var top = parseInt($("center_id").getStyle("top"));
+    var left = parseInt($("center_id").getStyle("left"));
+    var dX = event.screenX - _startScreenX;
+    var dY = event.screenY - _startScreenY;
+
+    // domSetTextElementTextById("hex_index", "Draging:");
+    $("overlayimage").style.cursor="default";
+    $("center_id").setStyle("top: "+(top+dY)+"px; left: "+(left+dX)+"px;");
+
+    return true;
+}
+
+// function dragging(event) {
+    // var x = hexMap.getHexX(the_index);
+    // var y = hexMap.getHexY(the_index, x);
+//    domSetTextElementTextById("hex_index", "Draging:");
+
+//    return true;
+// }
+
+function mouseDown(event) {
+  _isMouseDown = true;
+  // domSetTextElementTextById("hex_index", "MouseDown ("+_isMouseDown+", "+_hasBeenDragged+")");
+
+  return false;
+}
+
+function mouseUp(event) {
+  _isMouseDown = false;
+  // domSetTextElementTextById("hex_index", "MouseUp ("+_isMouseDown+", "+_hasBeenDragged+")");
+
+  if (_hasBeenDragged) {
+    _hasBeenDragged = false;
+    draggingEnd(event);
+  }
+
+  return false;
+}
+
+function mouseMove(event) {
+  // domSetTextElementTextById("hex_index", "mouseMove ("+_isMouseDown+", "+_hasBeenDragged+")");
+  if (_isMouseDown) {
+    if (!_hasBeenDragged) {
+      _hasBeenDragged = true;
+      draggingStart(event);
+    }  
+  }
+
+  return true;
+}
+</script>

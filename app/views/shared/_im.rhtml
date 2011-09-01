@@ -1,0 +1,10 @@
+<div id="im">
+  <div id="im_room">
+    <div id="im_messages_history"><%= render(:partial => "shared/im_room")%></div>
+    <div id="im_text_input_form">
+        <% form_remote_tag(:url => {:controller => "im", :action => "im_push_messages"}, :loading => "im_text_input_im_text.disabled = true; im_text_input_im_text.style.cursor='wait'; im.style.cursor='wait';", :complete => "im_text_input_im_text.disabled = false; im_text_input_im_text.style.cursor='default'; im.style.cursor='default'; imResetIntervalLength();", :update => "im_messages_history") do %>
+            <%= text_field 'im_text_input', 'im_text', :size=>60, :maxlength=>250 %>
+        <% end %>
+    </div>
+  </div>
+</div>

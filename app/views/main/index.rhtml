@@ -1,0 +1,25 @@
+<script type="text/javascript"> 
+function scrollIt() {
+    var obj=document.getElementById('im_messages_history');
+    obj.scrollTop=obj.scrollHeight;   
+}
+</script>
+
+<div id="game_info_bar">
+  <div id="game_info_bar__left">
+    <span id="game_info_bar__battlereport_button" onclick="button_battle_report();"><img src="../images/32x32/battelreport_play.png"  height="20px" width="20px" title="Battlereport"></span>
+    <span id="game_info_bar__game_session_name" onclick="button_game_session_name();" title="Battle Options & Stats"><%= @game_session_name %></span>
+    <ul id="game_info_bar__gold_list">
+      <li id="resources">Gold: 0</li>
+    </ul>
+  </div>
+  <div id="game_info_bar__right">
+    <div id="button_next_turn_parent_id"> </div>
+    <div id="battle_report_controller_view"></div>
+  </div>
+</div>
+
+<%= render(:partial => "shared/hexmap") %>
+<div id="game_main"><%= render(:partial => "map") %></div>
+<div id="users_status_id"> </div>
+<%= render(:partial => "shared/im")%>

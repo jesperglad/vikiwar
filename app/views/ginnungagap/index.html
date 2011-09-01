@@ -1,0 +1,67 @@
+<h1>Region Editor</h1>
+<h2>Options</h2>
+[<%= link_to("Create", :controller => :ginnungagap, :action => :create_region) %>]
+[<%= link_to("Upload Region", :controller => :ginnungagap, :action => :upload_region) %>]
+[<%= link_to("Upload Regions info", :controller => :ginnungagap, :action => :upload_regions_info) %>]
+
+<h2>Terrains</h2>
+
+<table border='0'>
+    <tr>
+        <th bgcolor="grey">Name</th>
+        <th bgcolor="lightgrey">Healing Modifier</th>
+    </tr>
+
+<% Terrain.find(:all).each do |terrain| %>
+    <tr>
+        <td bgcolor="grey"><%= terrain.name %></td>
+        <td bgcolor="lightgrey"><%= terrain.healing_modifier %></td>
+    </tr>
+<% end %>
+</table>
+
+
+<h2>Regions</h2>
+<% form_tag(:action => :update_regions) do %>
+  Selections:
+<%= submit_tag('Update')%>
+
+<table border='0'>
+<tr>
+    <th bgcolor="grey">Publish</th>
+    <th bgcolor="grey">Delete</th>
+    <th bgcolor="grey">Dump</th>
+    <th bgcolor="grey">Give User Access</th>
+    <th bgcolor="lightgrey">Region Name</th>
+    <th bgcolor="lightgrey">Actions</th>
+    <th bgcolor="lightgrey">Access Region Id</th>
+</tr>
+<% Region.find(:all).each do |region|
+    if region.publish
+        is_published = "true"        
+    else
+        is_published = nil        
+    end
+%>
+
+    <tr>
+        <td bgcolor="grey"><%= check_box_tag('region_publish_'+region.name, "maybe", is_published) %></td>
+        <td bgcolor="grey"><%= check_box_tag('region_delete_'+region.name) %></td>
+        <td bgcolor="grey"><%= check_box_tag('dump_cvs_file_'+region.name) %></td>
+        <td bgcolor="grey"><%= check_box_tag('give_user_access_'+region.name) %></td>
+        <td bgcolor="lightgrey"> <%= link_to(""+region.name, :action => :edit_region, :id => region.name) %> </td>
+        <td bgcolor="lightgrey"> <%= link_to("Rename<br>", :action => :rename_region, :id => region.name) %> </td>
+        <% if region.access_region_id %>
+            <td bgcolor="lightgrey"> <%= link_to(""+region.access_region_id.to_s, :action => :access_region, :id => region.name) %> </td>
+        <% else %>
+            <td bgcolor="red"> NULL </td>
+        <% end %>
+    </tr>
+<% end %>
+</table>
+<% end %>
+<script type="text/javascript">
+  function main() {
+    return 0;
+  }
+</script>

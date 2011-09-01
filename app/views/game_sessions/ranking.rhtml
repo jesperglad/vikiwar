@@ -1,0 +1,21 @@
+<%= javascript_include_tag 'prototype' %>
+<%= stylesheet_link_tag 'game_sessions'%>
+
+<%= periodically_call_remote :url => {:action => 'notify_online', :controller => 'user'}, :frequency => 30 %>
+<h1>Ranking</h1>
+
+<table class="game_sessions_ranking_list" border ="0">
+  <tr><th>Rank</th><th>Name</th><th>Points</th><th>Title</th><th>Regions</th></tr>
+  <% 
+    i = 0
+    @users.each do |u| %>
+    <% if u.account_type == "user"
+      i += 1 %>
+      <tr><td><%= i %></td><td><%= u.in_game_name  %></td><td><%= u.rank  %></td><td><%= Title.get_title(u) %></td><td><%= u.regions.size %></td></tr>
+    <% end %>
+  <% end %>
+</table>
+
+<script type="text/javascript">
+  function main() {}
+</script>

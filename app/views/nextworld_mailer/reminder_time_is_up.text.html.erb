@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <p>
+      <img src="http://415vik.aquinas.hostingrails.com/images/32x32/logo.jpg"></img>
+    </p>
+    <h1>A reminder, your men are waiting for your orders in the battle of <%= @the_battle %> </h1>
+    <p>
+    The time is up, your men wants to fight, and so do you opponents.
+    </p>
+    <p>
+    You can go directly to the overview of your
+    <a href='<%= url_for(:host => "415vik.aquinas.hostingrails.com", :controller => "game_sessions") %>'>ongoing battles</a>.
+    </p>
+  </body>
+</html>

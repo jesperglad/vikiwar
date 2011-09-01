@@ -1,0 +1,1249 @@
+body {
+	background-color: #444444;
+        color: black;
+	font-family: Arial, Helvetica, Sans-serif;
+	font-size: 1em;
+	font-weight: normal;
+}
+
+h1 {
+	color: #bbd9ee;
+	margin-top: 0px;
+	padding-top: 0px;
+}
+
+#vikiwar_body {
+    margin-left: 120px;
+    margin-right: 120px;
+    height: 900px;
+    width: 850px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border: thin groove gray;
+    /* background: black top center url(../images/uk.png) no-repeat; */
+    background: white 50% 20% url(../images/VikiWar_header.png) no-repeat;
+}
+
+#corner_img_top_right {
+	position: absolute;
+	/* left: 750px; */
+        top: 15px;
+        left: 875px;
+}
+
+#corner_img_bottom_right {
+	position: absolute;
+	top: 807px;
+	left: 875px;
+}
+
+#corner_img_bottom_left {
+	position: absolute;
+	top: 805px;
+	left: 130px;
+}
+
+#main_header_wait_for_orders {
+	position: absolute;
+	top: 36px;
+	left: 415px;
+    display: inline;
+}
+
+/*
+ * Main
+ */
+#main_header {
+        margin-left: 10px;
+	height: 47px;
+	width: 760px;
+	background: top left url(../images/32x32/vikiwar_logo.png) no-repeat;
+	background-color: white; /* #206ba4; */
+}
+
+#main_header_left {
+	float: left;
+}
+
+#main_header_right {
+	float: right;
+	/* background: top right url(../images/32x32/vikiwar_corner_Topright.png) no-repeat; */
+}
+
+#main_header_menu {
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 5px;
+	padding-top: 0px;
+	padding-left: 0px;
+}
+
+ul.main_header_menu {
+	list-style: none;
+	margin-top: 0px;
+	margin-left: 0px;
+	padding-top: 0px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+}
+
+ul.main_header_menu li {
+	display: inline;
+	margin-top: 0px;
+	margin-left: 2px;
+	margin-right: 2px;
+	padding-top: 0px;
+	font-family: Arial, Helvetica, Sans-serif;
+	font-size: 0.6em;
+}
+
+ul.main_header_menu a {
+	display: inline;
+	color: red;
+}
+
+#main_header_user_name {
+	padding-top: 27px;
+	margin-left: 425px;
+	color: black;
+	font-size: 0.8em;
+}
+
+#main_fix_width_warpper {
+	width: 760px;
+	height: 740px;
+	padding: 10px;
+	border: 1px solid white; /* #54a4de; */
+	background-color: white; /* #206ba4; */
+}
+
+/*
+ * game_info_bar
+ */
+#game_info_bar {
+	padding: 0px;
+	height: 70px;
+}
+
+#game_info_bar__left {
+	float: left;
+	width: 300px;
+}
+
+#game_info_bar__right {
+	float: right;
+	width: 435px;
+}
+
+#game_info_bar__game_session_name {
+	margin-top: 0px;
+	margin-left: 0px;
+	padding-top: 0px;
+	color: #c1e064;
+	font-family: Arial, Helvetica, Sans-serif;
+	font-size: 1.0em;
+	font-weight: bold;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+#game_info_bar__game_session_name:hover {
+	color: #d6eb9a;
+	cursor: pointer;
+}
+
+#game_info_bar__battlereport_button {
+	margin-left: 10px;
+	cursor: pointer;
+}
+
+#game_info_bar__gold_list {
+	list-style: none;
+	margin-top: 10px;
+	margin-left: 10px;
+	padding-left: 0px;
+	font-family: Arial, Helvetica, Sans-serif;
+	font-size: 0.9em;
+}
+
+#game_main {
+	width: 800px;
+	height: 560px;
+	margin-top: -15px;
+	margin-left: -20px;
+	background: top left url(../images/32x32/background_black_800x560.png) no-repeat;        
+}
+
+#clipping {
+    position: absolute;
+    width: 800px;
+    height: 560px;
+    display: inline;
+    clip: rect(0px, 770px, 480px, 25px);
+}
+
+#center_id {
+	position: relative;
+	top: 0px;
+	left: 0px;
+	margin-top: 2px;
+	margin-left: 5px;
+	padding-top: 5px;
+	padding-left: 5px;        
+}
+
+#game__white_background,#overlayimage {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 0;
+}
+
+#overlayimage {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 1000;
+}
+
+/*
+ * Resource, income, expenses text
+ */
+#resources {
+	font-size: 1.0em;
+	color: black;
+}
+
+#expenses {
+	font-size: 0.9em;
+	color: red;
+	font-weight: bold;
+}
+
+#income {
+	font-size: 0.9em;
+	color: black;
+	font-weight: bold;
+}
+
+/* #terrain1,#unit1,#goc0,#goc1,#goc2,#goc3 {
+	font-family: "Courier New", Courier, monospace;
+	font-size: 0.8em;
+} */
+
+#javascriptdata,#status_data_id,#former_turn_results_text,#battlereportdata,#historydata
+	{
+	width: 10px;
+	height: 10px;
+	position: relative;
+	overflow: hidden;
+	visibility: hidden;
+}
+
+/*
+ * Button Next Turn
+ */
+#button_next_turn_id {
+	float: right;
+	height: 50px;
+	width: 110px;
+	margin-top: 0px;
+	margin-right: 40px;
+	padding: 5px;
+	border: 1px solid black;
+	text-align: center;
+	color: black;
+	background-color: #c1e064;
+	cursor: pointer;
+        border-radius: 3px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+
+	/* display: none; */
+}
+
+#button_next_turn_id:hover {
+	background-color: #d6eb9a;
+}
+
+#button_next_turn_text_id {
+	font-size: 1.0em;
+}
+
+#button_next_turn_turn_id,#button_next_turn_timer_id {
+	font-family: "Courier New", Courier, monospace;
+	padding: 3px 3px 3px 3px;
+	font-size: 0.6em;
+}
+
+/*
+ * map_actions
+ */
+#map_actions {
+	float: left;
+	height: 110px;
+	border: 5px solid #54a4de;
+	padding: 5px;
+	background-color: white; /* #206ba4; */
+}
+
+.map_actions_div {
+	margin-top: 0px;
+	padding: 0px;
+}
+
+ul.map_actions {
+	list-style: none;
+	margin-top: 5px;
+	margin-left: 0px;
+	padding-top: 0px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+}
+
+/*
+ * users_status
+ */
+#users_status_id {
+	height: 130px;
+	width: 200px;
+	float: left;
+	padding: 5px;
+	background-color: white; /* #206ba4; */
+}
+
+ul.users_status_list {
+	list-style-type: none;
+	margin-left: 0px;
+	padding-left: 0px;
+}
+
+ul.users_status_list li {
+	display: block;
+	width: 180px;
+	height: 18px;
+	margin-top: 0px;
+	padding-top: 0px;
+	margin-bottom: 3px;
+	padding-left: 1px;
+	border-left: 15px solid;
+	color: black; /* #206ba4; */
+	overflow: hidden;
+}
+
+ul.users_status_list a {
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-bottom: 0px;
+	padding-top: 0px;
+	padding-left: 0px;
+	vertical-align: text-top;
+	text-decoration: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 0.7em;
+}
+
+#usc_player_action {
+	vertical-align: text-top;
+	text-decoration: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 0.7em;
+	cursor: pointer;
+}
+
+/* 
+ *  Turn Information Container
+ */
+#next_turn {
+	float: right;
+}
+
+.infotableheader {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	background-color: #bbd9ee;
+}
+
+.infotablebody {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	background-color: #ebf4fa;
+}
+
+.game_options_table_header {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 0.8em;
+	font-weight: bold;
+	background-color: #bbd9ee;
+}
+
+.game_options_table_body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	background-color: #ebf4fa;
+}
+
+/* 
+ *  Insctance Messags
+ */
+#im {
+	background: top left url(../images/32x32/im_main_background_530x200.png)
+		no-repeat;
+	background-color: white; /* #206ba4; */
+	margin-top: -25px;
+	margin-left: 0px;
+	padding: 5px;
+	float: right;
+	width: 530px;
+	height: 200px;
+}
+
+#rooms_sidebar_left {
+	float: left;
+	width: 100px;
+	height: 130px;
+	background-color: #ebf4fa;
+	font-size: 0.8em;
+}
+
+#im_room {
+	margin-top: 25px;
+	margin-left: 25px;
+	margin-right: 40px;
+	height: 140px;
+	font-size: 1.0em;
+}
+
+ul.im_room_list {
+	margin-left: 0px;
+	padding-left: 0px;
+}
+
+ul.im_room_list li {
+	list-style-type: none;
+}
+
+#im_messages_history {
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+	height: 110px;
+	margin-top: 3px;
+	margin-left: 3px;
+	padding-left: 5px;
+	overflow: auto;
+	color: black;
+	background-color: #bbd9ee;
+	font-size: 0.75em;
+}
+
+ul.im_history_list {
+	margin-left: 0px;
+	padding-left: 0px;
+}
+
+ul.im_history_list li {
+	list-style-type: none;
+}
+
+#im_text_input_form {
+	padding: 2px;
+	height: 25px;
+	margin-top: 2px;
+	margin-left: 3px;
+	margin-bottom: 0px;
+	background-color: #ff9834;
+	font-size: 0.8em;
+        border-radius: 3px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+}
+
+#im_text_input_im_text {
+	height: 20px;
+}
+/* 
+ *  Users left sidebar
+ */
+#history {
+	float: left;
+	overflow: auto;
+	margin: 5px;
+	padding: 5px;
+	height: 110px;
+	width: 45%;
+	border: 5px solid white; /* #206ba4; */
+	background-color: #ebf4fa;
+}
+
+h3.history {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	margin: 2px;
+	padding: 1px;
+	background-color: #ff9834;
+}
+
+#history_body_text_base {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+ul.history {
+	margin-left: 5px;
+	padding-left: 5px;
+}
+
+.history_move {
+	list-style-type: none;
+	background: url(../images/32x32/order_move_west_32x32.png) no-repeat;
+	background-position: 0px -9px;
+	margin: 0px;
+	padding-left: 35px;
+	padding-bottom: 10px;
+}
+
+.history_attack {
+	list-style-type: none;
+	background: url(../images/32x32/order_attack_west_32x32.png) no-repeat;
+	background-position: 0px -9px;
+	margin: 0px;
+	padding-left: 35px;
+	padding-bottom: 10px;
+}
+
+/*
+* Popup
+*/
+#popup_killed_peace_box_main, #popup_game_sessions_selection_box, #build_unit_list_selection_popup,#popup_textbox_main,#popup_yesno,#popup_nextturn {
+	background: url(../images/32x32/popup_selection_list_bg_32x32.png) no-repeat;
+        background-color: black;
+	position: absolute;
+	top: 190px;
+	width: 300px;
+	height: 300px;
+}
+
+#popup_nextturn {
+	background: url(../images/VikiWar_header.png) no-repeat;
+        background-color: black;
+        background-position: right top;
+	position: absolute;
+	top: 190px;
+        left: 120px;
+	width: 300px;
+	height: 300px;
+        border: 3px solid #d6eb9a;
+         border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+}
+
+#popup_textbox_main {
+	background: url(../images/VikiWar_header.png) no-repeat;
+        background-color: black;
+	position: absolute;
+	top: 190px;
+        left: 120px;
+	width: 300px;
+	height: 300px;
+        border: 3px solid #d6eb9a;
+         border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+}
+
+#popup_text_wapper,#popup_yesno_wapper,#popup_nextturn_wapper,#popup_options_wapper
+	{
+	position: absolute;
+	z-index: 1;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+#popup_header,#popup_textbox_header,#popup_nextturn_header,#popup_yesno_header,#popup_options_header
+	{
+	font-size: 1.1em;
+	font-weight: bold;
+	color: #c1e064;
+	height: 20px;
+}
+
+#popup_game_sessions_selection_body, #popup_body,#popup_textbox_body,#popup_yesno_body,#popup_nextturn_body {
+	overflow: auto;
+	margin-top: 10px;
+	font-size: 1.0em;
+	color: #EEEEEE;
+	width: 280px;
+	height: 200px;
+}
+
+#popup_textbox_peace_img, #popup_textbox_surrender_img {
+   width: 240px;
+   margin-left: 40px;
+}
+
+#popup_options {
+	background: url(../images/VikiWar_header.png) no-repeat;
+        background-color: black;
+	position: absolute;
+	top: 165px;
+	left: 0px;
+	width: 570px;
+	height: 320px;
+
+        border: 3px solid #d6eb9a;
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+}
+
+#popup_options_body {
+	overflow: auto;
+	margin-top: 10px;
+        margin-right: 10px;
+	margin-left: 5px;
+	font-size: 0.8em;
+	color: #EEEEEE;
+	width: 570px;
+	height: 250px;
+}
+
+#popup_options_subheader {
+	color: #ff9834;
+	font-size: 0.9em;
+}
+
+#popup_options_body_top {
+	margin: 3px;
+	width: 560px;
+	height: 150px;
+
+}
+
+#popup_options_map_icon {
+	margin: 3px;
+	float: left;
+	color: white;
+        width: 75px;
+        height: 75px;
+}
+
+#popup_options_body_top_right {
+	margin: 3px;
+	float: right;
+	width: 350px;
+        margin-right: 20px;
+}
+
+#popup_options_body_middle {
+	margin: 3px;
+	float: left;
+}
+
+#popup_options_body_bottom {
+	margin: 3px;
+	float: left;
+        width: 560px;
+}
+
+#popup_options_cities_chart {
+        margin-top: 3px;
+	margin-left: -30px;
+	float: left;
+}
+
+#popup_options_options {
+	margin-top: 20px;
+        margin-right: 40px;
+	float: right;
+	width: 180px;
+}
+
+ul.popup_selection_list {
+	list-style: none;
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 10px;
+	padding-top: 0px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+}
+
+#popup_selection_list_not_selected {
+	margin: 2px;
+	padding-left: 40px;
+	padding-top: 5px;
+	height: 32px;
+	border: 2px solid black;
+}
+
+#popup_selection_list_selected {
+	margin: 2px;
+	padding-left: 40px;
+	padding-top: 5px;
+	height: 32px;
+	color: #c1e064;
+	border: 2px solid #c1e064;
+}
+
+ul.popup_game_sessions_selection_list {
+	
+}
+
+#popup_button_list {
+	margin-top: 10px;
+	margin-bottom: 0px;
+	margin-left: 10px;
+	margin-right: 10px;
+	height: 25px;		
+}
+
+ul.popup_button_list {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+ul.popup_button_list li {
+	display: inline;
+	float: right;
+	border: 1px solid #e7e4d3;
+	margin-left: 5px;
+	margin-right: 10px;
+	margin-top: 0px;
+        border-radius: 3px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+
+}
+
+#popup_button {
+	padding: 3px 3px 3px 3px;
+	color: black;
+	background-color: #c1e064;
+	cursor: pointer;
+}
+
+#popup_button:hover {
+	background-color: #d6eb9a;
+}
+
+/*
+ * Battle Report Controller
+ */
+#battle_report_controller_view {
+
+}
+ 
+/* #battle_report_controller {
+	background: url(../images/32x32/battle_report_background2.png) no-repeat;
+	float: right;
+	width: 236px;
+	height: 70px;
+	color: white;	
+}
+*/
+
+#battle_report_controller {
+    float: right;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 40px;
+    width: 110px;
+    height: 50px;
+    padding: 5px;
+    border: 2px solid #e7e4d3;
+    text-align: center;
+    color: black;
+    background-color: #f1efe2;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+}
+
+#battle_report_controller_wapper {
+    position: relative;
+    width: 110px;
+    height: 50px;
+}
+
+/*
+#battle_report_controller_wapper_left {
+	float: left;
+}
+*/
+
+#batlle_report_controller_cancel_button {
+	background: url(../images/32x32/cross.png) no-repeat;
+	position: absolute;
+	top: -4px;
+	left: 97px;
+	width: 16px;
+	height: 16px;
+	z-index: 30006;
+	cursor: pointer;
+}
+
+#batlle_report_controller_cancel_button:hover {
+	background: url(../images/32x32/cancel.png) no-repeat;
+}
+
+#battle_report_controller_header {
+	margin-top: 3px;
+	margin-bottom: 3px;
+	margin-left: 0px;
+	padding: 0px;
+	font-size: 0.6em;
+	/* color: #EEEEEE; */
+	/* height: 14px; */
+}
+
+#battle_report_controller_slider {
+	float: left;
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 5px;
+}
+
+#battle_report_controller_button_list {
+        float: left;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding: 0px;
+	/* height: 18px; */
+	/* background-color: #0000ff; */
+}
+
+ul.battle_report_controller_button_list {
+	list-style: none;
+	margin-top: 0px;
+	margin-left: 0px;
+	padding: 0px;
+}
+
+ul.battle_report_controller_button_list li {
+	display: inline;	
+	/*  border: 1px solid #e7e4d3; */
+	margin-left: 2px;
+	margin-right: 0px;
+	margin-top: 0px;
+	padding: 0px;
+	 /* width: 30px; */
+	 /* height: 30px; */
+	
+}
+
+#battle_report_controller_slider_number {
+	float: right;
+	font-size: 0.9em;
+	margin-top: 6px;
+	margin-left: 0px;
+	margin-right: 0px;
+        padding: 0px;
+}
+
+
+/* #battle_report_controller_button_start { 
+    background: url(../images/32x32/battelreport_play.png) no-repeat;
+}
+
+#battle_report_controller_button_start:hover {
+    background: url(../images/32x32/control_rewind.png) no-repeat;
+}
+
+#battle_report_controller_button_back_one_step {
+    background: url(../images/32x32/control_start_blue.png) no-repeat;
+}
+
+#battle_report_controller_button_back_one_step:hover {
+    background: url(../images/32x32/control_start.png) no-repeat;
+}
+
+#battle_report_controller_button_play {
+    background: url(../images/32x32/control_play_blue.png) no-repeat;
+}
+
+#battle_report_controller_button_play:hover {
+    background: url(../images/32x32/battelreport_play.png) no-repeat;
+}
+
+#battle_report_controller_button_stop {
+    background: url(../images/32x32/control_stop_blue.png) no-repeat;
+    display: none;
+}
+
+#battle_report_controller_button_stop:hover {
+    background: url(../images/32x32/battelreport_stop.png) no-repeat;
+}
+
+#battle_report_controller_button_forward_one_step {
+    background: url(../images/32x32/control_end_blue.png) no-repeat;
+}
+
+#battle_report_controller_button_forward_one_step:hover {
+    background: url(../images/32x32/control_end.png) no-repeat;
+}
+
+#battle_report_controller_button_end {
+    background: url(../images/32x32/control_fastforward_blue.png) no-repeat;
+}
+
+#battle_report_controller_button_end:hover {
+    background: url(../images/32x32/control_fastforward.png) no-repeat;
+}
+*/
+
+#map_controller {
+    position: absolute;
+    display: inline;
+    top: 5px;
+    left: 600px;
+    width: 150px;
+    height: 24px;
+    z-index: 10000;
+    background: url(../images/32x32/black_opacity_170_32x32.png);
+    border: 1px solid grey;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;    
+}
+
+#map_controller_map_reset_icon {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+}
+
+#map_controller_hex_index {
+    margin-left: 24px;
+    margin-top: 10px;
+    color: gray;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.6em;
+    font-weight: bold;
+}
+
+/*
+ * Info Box
+ */
+#info_box_parent {
+        display: inline;
+}
+
+
+#info_box_editor {
+	position: absolute;
+        display: inline;
+	top: 600px;
+	left: 25px;
+	width: 735px;
+	height: 65px;
+	z-index: 10000;
+	border: 1px solid grey;
+	font-family: "Courier New", Courier, monospace;
+	font-size: 0.8em;
+	padding: 5px 3px 5px 3px;
+	color: grey;
+        background: url(../images/32x32/black_opacity_170_32x32.png);
+	cursor: pointer;
+        border-radius: 6px;
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+}
+
+#info_box {
+	position: absolute;
+        display: inline;
+	top: 400px;
+	left: 25px;
+	width: 735px;
+	height: 65px;
+	z-index: 10000;
+	border: 1px solid grey;
+	font-family: "Courier New", Courier, monospace;
+	font-size: 0.8em;
+	padding: 5px 3px 5px 3px;
+	color: grey;
+        background: url(../images/32x32/black_opacity_170_32x32.png);
+	cursor: pointer;
+        border-radius: 6px;
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+}
+
+#info_box_terrain {
+    float: left;
+    display: inline;    
+    width: 250px;
+    height: 60px;
+    color: white;
+    text-transform: capitalize;
+}
+
+#info_box_areaelement {
+    float: left;
+    display: inline;
+    width: 220px;
+    height: 60px;
+    color: white;
+    text-transform: capitalize;
+}
+
+#info_box_unit {
+    float: right;
+    display: inline;
+    width: 250px;
+    height: 60px;
+    color: white;
+    text-transform: capitalize;
+}
+
+#info_box_areaelement_left, #info_box_unit_left, #info_box_terrain_left {
+    float: left;
+    display: inline;
+    width: 50px;
+    height: 60px;
+}
+
+#info_box_terrain_right {
+    float: right;
+    display: inline;
+    font-size: 0.8em;
+    width: 180px;
+    height: 45px;
+    color: gray;
+    margin-top: 15px;
+    margin-left: 5px;
+    text-transform: none;
+}
+
+#info_box_areaelement_right {
+    float: right;
+    display: inline;
+    font-size: 0.8em;
+    width: 160px;
+    height: 45px;
+    color: gray;
+    margin-top: 15px;
+    margin-left: 5px;
+    text-transform: none;
+}
+
+#info_box_unit_right {
+    float: right;
+    display: inline;
+    font-size: 0.8em;
+    width: 190px;
+    height: 45px;
+    color: gray;
+    margin-top: 15px;
+    margin-left: 5px;
+    text-transform: none;
+}
+
+#info_box_list_unit_healt_image {
+	position: absolute;
+	top: 21px;
+	left: 484px;
+	z-index: 10002;
+}
+
+#info_box_list_terrain_text {
+    width: 220px;
+}
+
+#info_box_list_areaelement_level_image {
+	position: absolute;
+	top: 23px;
+	left: 252px;
+	z-index: 10002;
+}
+
+#info_box_list_areaelement_text {
+}
+
+#info_box_list_unit_text {
+    width: 220px;
+}
+
+#info_box_cancel_button {
+	background: url(../images/32x32/cross.png) no-repeat;
+	position: absolute;
+	top: 1px;
+	left: 720px;
+	width: 16px;
+	height: 16px;
+	z-index: 30006;
+	cursor: pointer;
+}
+
+#info_box_cancel_button:hover {
+	background: url(../images/32x32/cancel.png) no-repeat;
+}
+
+/*
+ * order_box
+ */
+#order_box_panel_parent {
+    display: inline;
+}
+
+#order_box_panel {
+	position: relative;
+}
+
+#order_box {
+	position: absolute;
+        display: inline;
+	top: 5px;
+	left: 25px;
+	width: 250px;
+	height: 20px;
+	z-index: 10000;
+        padding: 5px 3px 5px 3px;
+        background: url(../images/32x32/black_opacity_170_32x32.png);
+	border: 1px solid grey;
+        border-radius: 6px;
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+	color: white;
+	font-family: "Courier New", Courier, monospace;
+	font-size: 0.8em;
+        text-transform: capitalize;
+        text-align: center;
+	cursor: pointer;
+}
+
+#order_box:hover {
+    background-color: gray;
+}
+
+#order_box_units_in_cargo {
+	position: absolute;
+        display: inline;
+	top: 5px;
+	left: 25px;
+	width: 250px;
+	height: 20px;
+	z-index: 10000;
+        padding: 5px 3px 5px 3px;
+        background: url(../images/32x32/black_opacity_170_32x32.png);
+	border: 1px solid grey;
+        border-radius: 6px;
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+	color: white;
+	font-family: "Courier New", Courier, monospace;
+	font-size: 0.8em;
+        text-align: left;
+}
+
+#order_box_image_1 {
+        position: absolute;
+        top: -2px;
+        left: 130px;
+        margin: 0px;
+        padding: 0px;
+}
+
+#order_box_image_2 {
+        position: absolute;
+        top: -2px;
+        left: 160px;
+        margin: 0px;
+        padding: 0px;
+}
+
+#order_box_image_3 {
+        position: absolute;
+        top: -2px;
+        left: 190px;
+        margin: 0px;
+        padding: 0px;
+}
+
+/*
+ * Slider
+ */
+.track {
+	background-color: #aaa;
+	position: relative;
+	height: 5px;
+	width: 170px;
+	cursor: pointer;
+	z-index: 30000;
+}
+
+.handle {
+	background-color: #ff9834;
+	position: absolute;
+	height: 9px;
+	width: 9px;
+	top: -2px;
+	cursor: move;
+	z-index: 30002;
+}
+
+#healtDown, #raidDown {
+	font-family: "Arial Black", Helvetica, sans-serif;
+	font-size: 2.0em;
+	color: red;
+	/* visibility: hidden; */
+}
+
+#healtUp, #raidUp {
+	font-family: "Arial Black", Helvetica, sans-serif;
+	font-size: 2.0em;
+	color: green;
+	/* visibility: hidden; */
+}
+
+#raidDown {
+	font-family: "Arial Black", Helvetica, sans-serif;
+	font-size: 1.4em;
+	color: red;
+	/* visibility: hidden; */
+}
+
+#raidUp {
+	font-family: "Arial Black", Helvetica, sans-serif;
+	font-size: 1.4em;
+	color: blue;
+	/* visibility: hidden; */
+}
+
+#edit_region_view {
+	position: absolute;
+	top: 120px;
+	left: 50px;
+	height: 9px;
+	width: 9px;
+}
+
+ul.edit_region_dropbox_list {
+	list-style-type: none;
+	margin-left: 0px;
+	padding-left: 0px;
+}
+
+ul.edit_region_dropbox_list li {
+	display: inline;
+}
+
+ul.edit_region_dropbox_list form {
+	display: inline;
+}
+
+#edit_region_save_button {
+	background-color: #ff9834;
+	height: 20px;
+	width: 100px;
+	cursor: pointer;
+}

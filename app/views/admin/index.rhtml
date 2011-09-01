@@ -1,0 +1,108 @@
+<h1>Admin - Login</h1>
+<h2>DB</h2>
+<p>
+   DB Commands: [<%= link_to "Clean", :action => "clean_db"%>]
+</p>
+
+<h2>Users</h2>
+<p>
+   Users: [<%= link_to "Add", :action => "add_user"%>]
+</p>
+<%  gss = GameSession.find :all, :conditions => ["state = ?","META"]
+    gs_names = Array.new
+    gss.each do |gs|
+      gs_names.push([gs.name, gs.id])
+    end
+%>
+
+
+
+<% form_tag(:action => :delete_users) do %>
+<%= select('selected_gs', nil, gs_names) %>
+  Selections: 
+<%= submit_tag('Delete')%>
+<%= submit_tag('Add Access Region')%>
+<table border='0'>
+  <tr>
+    <td bgcolor="grey">Select</td>
+    <th bgcolor="lightgrey">Name</th>
+    <th bgcolor="lightblue">Account type</th>
+    <th bgcolor="lightblue">Subscription</th>
+    <th bgcolor="lightgrey">E-mail</th>
+    <th bgcolor="lightgrey">Num Of Games</th>
+    <th bgcolor="lightgrey">Last reguest at</th>
+    <th bgcolor="lightgrey">Open Region Names</th>
+   </tr>
+    <%
+    regions = Region.find(:all)
+    regionsV = Array.new
+    regions.each do |r|
+      regionsV.push([r.name, r.name])
+    end
+    %>
+    <% @all_users.each do |the_user| %>
+        <%  last_request_at_S = ""
+            if the_user.last_request_at
+              last_request_at_S += the_user.last_request_at.to_s
+            end %>
+        <tr>
+            <td bgcolor="grey"><%= check_box_tag('user_'+the_user.name,  :checked_value => "1") %></td>
+             <td bgcolor="lightgrey"> <%= link_to(""+the_user.name+"<br>", :action => :edit_user) %> </td>
+             <td bgcolor="lightblue"> <%= ""+the_user.account_type+"<br>" %> </td>
+             <td bgcolor="lightblue"> <%= select(""+the_user.id.to_s, "id", [["dev", "dev"], ["pro", "pro"], ["preium","preium"], ["trial", "trial"]], {:selected => the_user.subscription_type}, {:onchange => remote_function(:url => {:action => :set_subscription_type}, :with => "'subscription=' + encodeURIComponent([this.id, $(this.id).value])")}) %> </td>
+             <td bgcolor="lightgrey"> <%= ""+the_user.email+"<br>" %> </td>
+             <td bgcolor="lightgrey"> <%= ""+the_user.num_of_games.to_s+"<br>" %> </td>
+             <td bgcolor="lightgrey"> <%= ""+last_request_at_S+"<br>" %> </td>
+             <td bgcolor="lightgrey"> <%= ""+the_user.open_region_names+"<br>" %> </td>
+             <td bgcolor="lightblue"> <%= select("access_region_"+the_user.id.to_s, "access_region_id", regionsV, {:selected => the_user.subscription_type}, {:onchange => remote_function(:url => {:action => :add_access_region}, :with => "'access_region=' + encodeURIComponent([this.id, $(this.id).value])")}) %> </td>
+          </tr>
+    <% end %>
+</table>
+<% end %>
+
+<h2>Game Sessions</h2>
+<% form_tag(:action => :game_sessions) do %>
+<%= submit_tag('Delete')%>
+<% all_game_sessions = GameSession.find :all %>
+<table border='0'>
+  <tr>
+    <td bgcolor="grey">Select</td>
+    <td bgcolor="grey">Game Session Name</td>
+    <td bgcolor="lightgrey">state</td>
+    <td bgcolor="lightgrey">current_turn_number</td>
+    <td bgcolor="lightgrey">last turn ended at</td>
+    <td bgcolor="lightgrey">Level</td>
+    <td bgcolor="lightgrey">Players</td>
+  </tr>
+    <%  all_game_sessions.each do |gs|
+          player_names = ""
+          gs.game_session_user_statuses.each do |gsus|
+            if ((gsus) && (gsus.user))
+              player_names += gsus.user.in_game_name + ","
+            end
+          end
+    %>
+        <tr>
+              <td bgcolor="grey"><%= check_box_tag(''+gs.id.to_s,  :checked_value => "1") %></td>
+              <td bgcolor="grey"><%= gs.name %></td>
+              <td bgcolor="lightgrey"> <%= gs.state %> </td>
+              <td bgcolor="lightblue"> <%= gs.current_turn_number %> </td>
+              <td bgcolor="lightblue"> <%= gs.latest_turn_ended_at %> </td>
+              <td bgcolor="lightblue"> <%= gs.level %> </td>
+              <td bgcolor="lightblue"> <%= player_names %> </td>              
+          </tr>
+    <% end %>
+</table>
+<% end %>
+
+
+<script type="text/javascript">
+  function main() {
+    return 0;
+  }
+
+  function setSubscriptionType() {
+    
+  }
+
+</script>

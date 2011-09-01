@@ -1,0 +1,1888 @@
+# Logfile created on 2011-02-07 20:56:21 +0100
+NoMethodError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.in_game_name):
+  app/controllers/main_controller.rb:156:in `set_static_game_data'
+  app/controllers/main_controller.rb:227:in `index'
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+NoMethodError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.host):
+  app/controllers/main_controller.rb:156:in `set_static_game_data'
+  app/controllers/main_controller.rb:227:in `index'
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+TypeError (can't convert nil into String):
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/csv.rb:1335:in `initialize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/csv.rb:1335:in `open'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/csv.rb:1335:in `open'
+  app/models/unit_type.rb:47:in `load_unit_type_data'
+  app/controllers/unit_editor_controller.rb:16:in `upload_unit_types_data'
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+NoMethodError (undefined method `[]' for #<CSV:0x44e00e0>):
+  app/models/unit_type.rb:48:in `block in load_unit_type_data'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/csv.rb:1340:in `open'
+  app/models/unit_type.rb:47:in `load_unit_type_data'
+  app/controllers/unit_editor_controller.rb:16:in `upload_unit_types_data'
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+NoMethodError (undefined method `[]' for #<CSV:0x4d7bf28>):
+  app/models/unit_type.rb:48:in `block in load_unit_type_data'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/csv.rb:1340:in `open'
+  app/models/unit_type.rb:47:in `load_unit_type_data'
+  app/controllers/unit_editor_controller.rb:16:in `upload_unit_types_data'
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+NoMethodError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.host):
+  app/controllers/main_controller.rb:156:in `set_static_game_data'
+  app/controllers/main_controller.rb:227:in `index'
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+NoMethodError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.host):
+  app/controllers/main_controller.rb:156:in `set_static_game_data'
+  app/controllers/main_controller.rb:227:in `index'
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+NoMethodError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.host):
+  app/controllers/main_controller.rb:156:in `set_static_game_data'
+  app/controllers/main_controller.rb:227:in `index'
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+MissingSourceFile (no such file to load -- json/pure):
+  app/models/game_session.rb:2:in `<top (required)>'
+  app/controllers/game_sessions_controller.rb:195:in `index'
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+NoMethodError (undefined method `id' for 19:Fixnum):
+  app/models/unit.rb:97:in `unit'
+  app/models/game_session_user_status.rb:17:in `is_chief_killed?'
+  app/models/game_session.rb:633:in `block in update_user_state'
+  app/models/game_session.rb:622:in `update_user_state'
+  app/models/game_session.rb:709:in `check_victory_condition'
+  app/models/game_session.rb:756:in `execute_current_turn'
+  app/controllers/main_controller.rb:221:in `next_turn'
+  app/controllers/main_controller.rb:301:in `end_turn'
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+NoMethodError (undefined method `id' for 19:Fixnum):
+  app/models/unit.rb:97:in `unit'
+  app/models/game_session_user_status.rb:17:in `is_chief_killed?'
+  app/models/game_session.rb:633:in `block in update_user_state'
+  app/models/game_session.rb:622:in `update_user_state'
+  app/models/game_session.rb:709:in `check_victory_condition'
+  app/models/game_session.rb:756:in `execute_current_turn'
+  app/controllers/main_controller.rb:221:in `next_turn'
+  app/controllers/main_controller.rb:329:in `save_orders'
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+NameError (uninitialized constant GameSession::JSON):
+  app/models/game_session.rb:780:in `history_last_turn'
+  app/controllers/main_controller.rb:355:in `get_history'
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+MissingSourceFile (no such file to load -- json/pure):
+  app/models/game_session.rb:2:in `<top (required)>'
+  app/controllers/im_controller.rb:41:in `im_pull_messages'
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+MissingSourceFile (no such file to load -- json/pure):
+  app/models/game_session.rb:2:in `<top (required)>'
+  app/controllers/generic_hexmap_controller.rb:27:in `set_static_hexmap_layout'
+  app/controllers/main_controller.rb:146:in `set_static_game_data'
+  app/controllers/main_controller.rb:227:in `index'
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+MissingSourceFile (no such file to load -- json/pure):
+  app/models/game_session.rb:2:in `<top (required)>'
+  app/controllers/im_controller.rb:41:in `im_pull_messages'
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+MissingSourceFile (no such file to load -- json/pure):
+  app/models/game_session.rb:2:in `<top (required)>'
+  app/controllers/application_controller.rb:57:in `current_game_session'
+  app/controllers/main_controller.rb:261:in `status'
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+MissingSourceFile (no such file to load -- json/pure):
+  app/models/game_session.rb:2:in `<top (required)>'
+  app/controllers/im_controller.rb:41:in `im_pull_messages'
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+MissingSourceFile (no such file to load -- json/pure):
+  app/models/game_session.rb:2:in `<top (required)>'
+  app/controllers/im_controller.rb:41:in `im_pull_messages'
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+MissingSourceFile (no such file to load -- json/pure):
+  app/models/game_session.rb:2:in `<top (required)>'
+  app/controllers/application_controller.rb:57:in `current_game_session'
+  app/controllers/main_controller.rb:261:in `status'
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+MissingSourceFile (no such file to load -- json/pure):
+  app/models/game_session.rb:2:in `<top (required)>'
+  app/controllers/im_controller.rb:41:in `im_pull_messages'
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+MissingSourceFile (no such file to load -- json/pure):
+  app/models/game_session.rb:2:in `<top (required)>'
+  app/controllers/application_controller.rb:57:in `current_game_session'
+  app/controllers/main_controller.rb:261:in `status'
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+NoMethodError (undefined method `only' for #<JSON::Pure::Generator::State:0x5064b58>):
+  C:/pro/tools/Ruby192/lib/ruby/gems/1.9.1/gems/json_pure-1.5.1/lib/json/pure/generator.rb:239:in `[]'
+  C:/pro/tools/Ruby192/lib/ruby/gems/1.9.1/gems/json_pure-1.5.1/lib/json/pure/generator.rb:320:in `block in json_transform'
+  C:/pro/tools/Ruby192/lib/ruby/gems/1.9.1/gems/json_pure-1.5.1/lib/json/pure/generator.rb:317:in `each'
+  C:/pro/tools/Ruby192/lib/ruby/gems/1.9.1/gems/json_pure-1.5.1/lib/json/pure/generator.rb:317:in `json_transform'
+  C:/pro/tools/Ruby192/lib/ruby/gems/1.9.1/gems/json_pure-1.5.1/lib/json/pure/generator.rb:304:in `to_json'
+  app/controllers/generic_hexmap_controller.rb:41:in `set_static_model'
+  app/controllers/main_controller.rb:147:in `set_static_game_data'
+  app/controllers/main_controller.rb:227:in `index'
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionView::TemplateError (incompatible character encodings: ASCII-8BIT and CP850) on line #23 of app/views/main/index.rhtml:
+20: </div>
+21: 
+22: <%= render(:partial => "shared/hexmap") %>
+23: <div id="game_main"><%= render(:partial => "map") %></div>
+24: <div id="users_status_id"> </div>
+25: <%= render(:partial => "shared/im")%>
+
+    app/views/main/index.rhtml:23:in `concat'
+    app/views/main/index.rhtml:23:in `_run_rhtml_app47views47main47index46rhtml'
+    app/controllers/main_controller.rb:232:in `index'
+    <internal:prelude>:10:in `synchronize'
+    C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+    C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+    C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+ActionController::RoutingError (No route matches "/images/32x32/hex_base2_32x32.png" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/pro/tools/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+

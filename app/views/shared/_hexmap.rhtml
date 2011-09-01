@@ -1,0 +1,86 @@
+<%= stylesheet_link_tag "main", :media => "all" %>
+
+<%= javascript_include_tag 'prototype' %>
+<%= javascript_include_tag 'effects' %>
+<%= javascript_include_tag 'slider' %>
+<%= javascript_include_tag 'general' %>
+<%= javascript_include_tag 'general_dom' %>
+<%= javascript_include_tag 'imagehandler' %>
+<%= javascript_include_tag 'hexmap_view2' %>
+<%= javascript_include_tag 'hexmap_model2' %>
+<%= javascript_include_tag 'im' %>
+
+<script type="text/javascript">
+
+var W_SCREEN = 760;
+var Z_IMAGE_MAP = 1000;
+
+// -----------------------------------------------------------------------------------------------------------
+//  Variables - General
+// -----------------------------------------------------------------------------------------------------------
+var user_id = <%=@the_user_id %>;
+
+// -----------------------------------------------------------------------------------------------------------
+//  Variables - Model related
+// -----------------------------------------------------------------------------------------------------------
+var w_hex_map = <%= @w_hex_map %>;  // Model
+var h_hex_map = <%= @h_hex_map %>;  // Model
+var visible_hexs = eval(<%=@visible_hexs_json %>); // Model
+var unitTypes = eval(<%=@unit_types_json %>); // Model
+var unitsArray = eval(<%=@units_json %>); // Model
+var areaElementTypesArray = eval(<%=@area_element_types_json %>); // Model
+var areaElementsArray = eval(<%=@area_elements_json %>); // Model
+var areas_array = eval(<%=@areas_array_json %>); // Model
+var terrains_array = eval(<%=@terrains_json %>); // Model
+
+var w_hex = <%= @w_hex %>;
+var h_hex = <%= @h_hex %>;
+var w_sqr_to_hex_conner = <%=  @w_sqr_to_hex_conner %>;
+var h_sqr_to_hex_conner = <%= @h_sqr_to_hex_conner %>;
+var w_canvas = <%= @w_canvas %>;
+var h_canvas = <%= @h_canvas %>;
+
+var x_graphic_offset = ((W_SCREEN - w_canvas)/2 / w_hex) * w_hex - 1;
+var y_graphic_offset = 0;
+
+var numOfPlayers = eval(<%= @num_of_players %>);
+
+var colors = eval(<%= @colors_json %>);
+var user_colors = eval(<%= @user_colors_json %>);
+var images_folder_name = "32x32";
+var name_of_images_to_load =
+    ["unit_indi_health1","unit_indi_health2","unit_indi_health3","unit_indi_health4","unit_indi_health5", "unit_indi_health6", "unit_indi_health7","unit_indi_health8" ,"unit_indi_health9",
+     "transpng1", "transpng2", "black_opacity_50", "black_opacity_25", "hex_base", "hex_base2",
+    "unit_indi_selected","unit_indi_move", "unit_indi_notmove", "indicator_possible_attack", "indicator_possible_raid", "indicator_no_unit_selected_2",
+    "area_element_city_blue","area_element_city_empty", "area_element_city_red", "area_element_city_green", "area_element_city_purple", 
+    "area_element_harbor_blue","area_element_harbor_empty", "area_element_harbor_red", "area_element_harbor_green", "area_element_harbor_purple",
+    "ae_level_1","ae_level_2","ae_level_3","ae_level_4","ae_level_5","ae_level_6","ae_level_7","ae_level_8","ae_level_9",
+     "order_attack_east","order_attack_north_east","order_attack_south_east","order_attack_west","order_attack_south_west","order_attack_north_west",
+     "order_raid_east","order_raid_north_east","order_raid_south_east","order_raid_west","order_raid_south_west","order_raid_north_west",
+     "order_move_east","order_move_north_east","order_move_south_east","order_move_west","order_move_south_west","order_move_north_west", 
+     "order_upgrad",
+     "red_man", "green_man", "green_sword"];
+
+var opacity_image_name = "black_opacity_50";
+var opacity_second_overlay_image_name = "black_opacity_25";
+var unit_selected_image_name = "unit_indi_selected";
+
+function loadImages() {
+    var image_names = new Array();
+    for (var i = 0; i < terrains_array.length; i++) {
+      image_names.push("terrain_"+terrains_array[i].name);
+    }
+
+    for (var color_index = 0; color_index < colors.length; color_index++) {
+      for (var i = 0; i < unitTypes.length; i++) {
+        image_names.push("unit_"+hexMap.units.getUnitTypeName(unitTypes[i])+"_"+colors[color_index]);
+      }
+    }
+    image_names = image_names.concat(name_of_images_to_load);
+
+    var image_handler = new ImageHandler(image_names,"http://415vik.aquinas.hostingrails.com/images/"+images_folder_name+"/","_32x32.png", on_image_preload);
+    // var image_handler = new ImageHandler(image_names,"http://localhost:3000/images/"+images_folder_name+"/","_32x32.png", on_image_preload);
+    return image_handler;
+}
+
+</script>

@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <%= stylesheet_link_tag "main", :media => "all" %>
+    
+  <title>Vikiwar</title>
+  <LINK REL="SHORTCUT ICON" HREF="http://415vik.aquinas.hostingrails.com/images/32x32/delete.png">
+  </head>
+
+  <body onload ="main();" >
+    <div id="vikiwar_body">
+      <img id="corner_img_top_right" src="../../images/32x32/vikiwar_corner_Topright_T.png" height="100px" width="100px">
+      <img id="corner_img_bottom_right" src="../../images/32x32/vikiwar_corner_Bottomright.png" height="100px" width="100px">
+      <img id="corner_img_bottom_left" src="../../images/32x32/vikiwar_corner_Bottomleft2.png" height="100px" width="100px">
+      <div id="main_header">
+        <div id="main_header_left">
+          <% if current_user && current_user.in_game_name && !current_user.in_game_name.empty? %>
+                  <% if params[:controller] == "main" %>
+                          <% gss_your_move = game_sessions_your_move %>
+                          <% if gss_your_move.size > 0 %>
+                          <div id="main_header_wait_for_orders" onclick="if ((_pgsb != undefined) && (_pgsb != null)) { button_game_sessions_box_show(); }" title="You have battlers where your men are awaiting your orders">
+                                  <img src='../../images/32x32/green_man.png' height='15' width='15'/>
+                          </div>
+                          <% else %>
+                          <div id="main_header_wait_for_orders" style="visibility: hidden;" onclick="if ((_pgsb != undefined) && (_pgsb != null)) { button_game_sessions_box_show(); }" title="You have battlers where your men are awaiting your orders">
+                                  <img src='../../images/32x32/green_man.png' height='15' width='15'/>
+                          </div>
+                          <% end %>
+                  <% end %>
+                  <div id="main_header_user_name">[<%= current_user.in_game_name %>]</div>
+          <% end %>
+        </div>
+
+        <div id="main_header_right">
+          <div id="main_header_menu">
+              <ul class="main_header_menu">
+                <li><a href="http://vikiwar.blogspot.com/">About</a></li>
+                <li><%= link_to "Ranking", { :controller => 'game_sessions', :action => "ranking"}  %></li>
+                <% if current_user %>
+                  <li><%= link_to "Battles", { :controller => 'game_sessions', :action => "index", :id=>""}  %></li>
+                  <li><%= link_to "Edit Profile", { :controller => 'user', :action => "edit"}  %></li>
+                  <li><%= link_to "Logout", { :controller => 'user_sessions', :action => "destroy"}  %></li>
+                <% end %>
+              </ul>
+          </div>
+        </div>
+      </div>
+      <div id="main_fix_width_warpper">
+        <%= yield :layout %>
+      </div>
+    </div>
+  </body>
+</html>

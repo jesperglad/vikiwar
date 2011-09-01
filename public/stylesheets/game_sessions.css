@@ -1,0 +1,341 @@
+/*
+ *  Colors:
+ *
+ *      1 - 206ba4 - 32, 107, 164
+ *      2 - 54a4de
+ *      3 - bbd9ee
+ *      4 - ebf4fa
+ *      5 - c1e064
+ *      6 - d6eb9a
+ *      7 - ff9834
+ *      8 - ffbf80
+ *      9 - f7ea9e
+ *     10 - faf1c3
+ *     11 - e7e4d3
+ *     12 - f1efe2
+ */
+
+ #game_session_main {
+    width: 800px;
+    height: 560px;
+    margin-top: -20px;
+    margin-left: 0px;
+    background: top left url(../images/32x32/background_black_800x560.png) no-repeat;
+}
+
+#game_session_index_view {
+    margin-top: 0px;
+    margin-left: 0px;
+}
+
+/********************************************************/
+/*** Game Session MAIN info box                       ***/
+/********************************************************/
+#game_session_gs_info {
+    position: absolute;
+    top: 135px;
+    left: 635px;
+    z-index: 1001;
+    width: 240px;
+    height: 410px;    
+    padding-left: 10px;
+    border: 2px solid #e7e4d3;
+    font-size: 0.8em;
+    overflow-y: auto;
+    background-color: #f1efe2;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+}
+
+#game_session_gs_info h2 {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    font-size: 1.1em;
+    color: #206ba4;
+}
+
+#game_session_gs_info strong {
+    color: #206ba4;
+}
+
+#game_session_small_info_text {
+    font-size: 0.7em;
+}
+
+.game_sessions_wait_for_orders {
+    display: inline;
+}
+/********************************************************/
+/*** Nav bar (My Battles, Create Battle, Join Battle  ***/
+/********************************************************/
+#game_sessions_nav_bar {
+    position: absolute;
+    top: 105px;
+    left: 635px;
+    z-index: 1001;
+    width: 240px;
+    height: 20px;
+    margin-top: 0px;
+    /* padding-left: 10px; */
+    /* border: 2px solid #e7e4d3; */
+    font-size: 0.8em;
+    background-color: black;
+}
+
+ul.game_sessions_nav_bar {
+    list-style: none;
+    padding-left: 0px;
+    margin-left: 0px;
+    margin-top: 3px;
+    padding-top: 3px;
+    padding-bottom: 2px;
+    /* border-bottom: 1px dashed white; */
+}
+
+ul.game_sessions_nav_bar li {
+    margin-top: 0px;
+    display: inline;
+}
+
+ul.game_sessions_nav_bar a {
+    border: 1px dashed white;    
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    /* border-bottom: none; */
+    padding: 5px 5px 5px 5px;
+    margin-top: 0px;
+    margin-right: 2px;
+    background-color: #c1e064;
+    font-size: 0.8em;
+    text-decoration: none;
+    color: #333;
+}
+
+ul.game_sessions_nav_bar a:hover {
+    background-color: #d6eb9a;
+}
+
+/********************************************************/
+/* Create Battle */
+/********************************************************/
+game_sessions_create_battle {
+    width: 210px;
+    margin-left: 0px;
+    margin-bottom: 10px;
+    padding: 0px 0px 10px 0px;
+    font-size: 0.8em;
+    /* border-bottom: none; */
+    color: black;
+    /* background-color: #bbd9ee; */
+}
+
+
+/********************************************************/
+/* Game Session List (used in My Battles)*/
+/********************************************************/
+ul.game_sessions_games_list {
+    list-style-type: none;
+    padding-left: 0px;
+    margin-left: 0px;
+    /* border-bottom: 1px dashed white; */
+}
+
+ul.game_sessions_games_list li {
+    display: block;  
+    width: 210px;
+    margin-left: 0px;
+    margin-bottom: 10px;
+    padding: 0px 0px 10px 0px;
+    font-size: 0.8em;
+    border-bottom: 1px dashed black; 
+    /* border-bottom: none; */
+    color: black;
+    /* background-color: #bbd9ee; */
+}
+
+/*
+ul.game_sessions_games_list li:hover {
+    display: block;
+    width: 210px;
+    margin-left: 0px;
+    margin-bottom: 10px;
+    padding: 0px 0px 10px 0px;
+    font-size: 0.8em;
+    border-bottom: 1px dashed black;
+    color: black;
+    background-color: #f7ea9e;
+}
+*/
+
+ul.game_sessions_games_list a {
+    display: inline;    
+}
+
+#game_session_games_list_order_state_icon_order_send {
+    height: 10px;
+    width: 10px;
+    background: top left url(../images/32x32/green_sword.png) no-repeat;
+}
+
+#game_session_games_list_order_state_icon_order_not_send {
+    height: 10px;
+    width: 10px;
+    background: top left url(../images/32x32/green_man.png) no-repeat;
+}
+
+#create_battle_notice {
+    margin: 3px;
+    padding: 3px;
+    border: 2px solid #ffbf80;
+    color: black;
+    background-color: #f7ea9e;
+    
+}
+
+#game_session_info_box_placer {
+  position:absolute;
+  left: 25px;
+  top: 95px;
+  z-index: 10000;
+  
+}
+
+#region_name_info {
+    color: gray;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.8em;
+    font-weight: bold;
+    position: absolute;
+    top: 100px;
+    left: 30px;
+    width: 150px;
+    z-index: 10000;
+}
+
+/*
+#info_box {
+	position: absolute;
+	top: 10px;
+	left: 5px;
+	width: 130px;
+	height: 35px;
+	z-index: 10000;
+	border: 1px solid black;
+	font-family: "Courier New", Courier, monospace;
+	font-size: 0.6em;
+	padding: 5px 3px 5px 3px;
+	color: black;
+	background-color: #c1e064;
+	cursor: pointer;
+}
+*/
+
+div.autocomplete {
+  position:absolute;
+  width:250px;
+  background-color: #d6eb9a;
+  /* border:1px solid #888; */
+  margin:0;
+  padding:0;
+}
+
+div.autocomplete ul {
+  list-style-type:none;
+  margin:0;
+  padding:0;
+}
+
+div.autocomplete ul li.selected { background-color: #ffb;}
+div.autocomplete ul li {
+  list-style-type:none;
+  display:block;
+  margin:0;
+  padding:2px;
+  height:32px;
+  cursor:pointer;
+}
+
+/********************************************************/
+/* Battles in hex */
+/********************************************************/
+#battles_in_hex {
+  position:absolute;
+  width:175px;
+  z-index: 1002;
+  background-color: #c1e064;
+  color: black;
+  font-size: 0.7em;
+  border:1px solid #888; 
+  margin:0;
+  padding:5px;
+  visibility: hidden; 
+}
+
+#battles_in_hex ul {
+  list-style-type:none;
+  margin:0;
+  padding:0;
+}
+
+#battles_in_hex ul li {
+  list-style-type:none;
+  display:block;
+  margin:0;
+  padding:2px;
+  background-color: #f7ea9e;
+}
+
+#battles_in_hex ul li:hover {
+    background-color: #d6eb9a;
+}
+
+#battles_in_hex ul li a {
+    text-decoration: none;
+}
+
+#battles_hash_json_wapper {
+    width: 10px;
+    height: 10px;
+    position: relative;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+/********************************************************/
+/* List of all users online */
+/********************************************************/
+#all_users_online_box {
+    position: absolute;
+    top: 605px;
+    left: 150px;
+    z-index: 1001;
+    width: 200px;
+    height: 185px;
+    border: 2px solid #e7e4d3;
+    font-size: 0.8em;
+    overflow-y: auto;
+    background-color: #f1efe2;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+}
+
+#all_users_online_box ul {
+  list-style-type:none;
+  margin:0;
+  padding:0;
+}
+
+#all_users_online_box ul li {
+  list-style-type:none;
+  display:block;
+  margin:3px;
+  padding:2px;
+  background-color: #e7e4d3;
+}
+
+#users_online {
+    visibility: hidden;  
+}

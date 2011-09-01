@@ -1,0 +1,19 @@
+<!-- <%= periodically_call_remote :url => {:action => 'notify_online', :controller => 'user'}, :frequency => 30 %> -->
+<h2>Join a battle</h2>
+
+
+<% if @game_sessions_user_can_join.size == 0 %>
+  Sorry, but there is currently no open battles. A real viking would in that case go start
+  one on he's own.
+<% else %>
+  <ul class="game_sessions_games_list">
+  <% @game_sessions_user_can_join.each do |gs|%>
+    <% state = "The battle is waiting to start, but is still missing "+gs.get_num_of_poxy_users.to_s+" out of "+gs.max_num_of_players.to_s+" players." %>
+    <li>
+        <strong>The battle of:</strong> <b><%= link_to "#{gs.name}", {:controller => 'game_sessions', :action => "inspect_game_session", :id => "#{gs.id}"} %></b><br />
+        <strong>Battle field:</strong> <%= gs.region.name %>, <strong>Turn: </strong><%=  gs.current_turn_number %> <br />
+        <%= state %> <br />
+    </li>
+   <% end %>
+  </ul>
+<% end %>

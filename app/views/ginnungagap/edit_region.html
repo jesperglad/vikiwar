@@ -1,0 +1,336 @@
+<%= render(:partial => "shared/hexmap") %>
+
+<script type="text/javascript">
+
+var _isCRTLPressed = false;
+var _isMouseDown = false;
+var _hasBeenDragged = false;
+
+var selectedIndex = -1;
+var selectedPlayer = "blue";
+var selectedPlayerId = null;
+var ac = null;
+
+document.onkeypress=detectspecialkeys
+
+function on_image_preload(images, num_images) {
+   hexMapView.draw();
+   hexMapView.fogOfWarOff();
+}
+
+// -----------------------------------------------------------------------------------------------------------
+// Main function
+// -----------------------------------------------------------------------------------------------------------
+function main() {
+    ac = new AreaCollection(terrains_array, areas_array);
+    uc = new UnitCollection(unitTypes,unitsArray);
+    aec = new AreaElementCollection(areaElementTypesArray, areaElementsArray);
+    hexMap = new HexMapModel(ac, uc, aec);
+    
+    var image_handler = loadImages();
+    
+    hexMapView = new HexMapView(
+      user_id, // MISSING
+      "edit_region_view",
+      hexMap,
+      w_hex,
+      h_hex,
+      w_hex_map,
+      h_hex_map,
+      w_canvas,
+      h_canvas,
+      h_sqr_to_hex_conner,
+      x_graphic_offset,
+      y_graphic_offset,
+      visible_hexs, 
+      unit_selected_image_name,  
+      opacity_image_name,
+      opacity_second_overlay_image_name,
+      image_handler,
+      user_colors
+    );
+ }
+
+function r(the_index) {
+    var x = hexMap.getHexX(the_index);
+    var y = hexMap.getHexY(the_index, x);
+    domSetTextElementTextById("hex_index", "Hex: ("+x+", "+y+") - ("+the_index+")");
+    
+  if (this.hexMap.areaElements.isAreaElementsAtHexIndex(the_index)) {
+      // An Area Element in the hex info
+      var area_element = this.hexMap.areaElements.getAllAreaElementsAtHexIndex(the_index);
+      var area_element_type = this.hexMap.areaElements.getAreaElementType(area_element);
+      domSetTextElementTextById("terrain1", ""+""+this.hexMap.areaElements.getAreaElementTypeName(area_element_type));
+  } else {
+      // No Area Element in the hex write terrain info
+      domSetTextElementTextById("terrain1", "Terrain: "+""+this.hexMap.areas.getAreaTerrainNameFromLocationIndex(the_index+1));// TODO: needs to be update ...
+  }
+
+  if (this.hexMap.units.isUnitsInHex(the_index)) {
+      the_units_in_hex =  this.hexMap.units.getAllUnitsAtHexIndex(the_index);
+        // TODO: NEEDS TO BE UPDATED FOR GAMES WITH MORE THAN ONE UNIT PR. HEX
+      the_unit =  the_units_in_hex[0];
+      unit_type = this.hexMap.units.getUnitType(the_unit);
+      domSetTextElementTextById("unit1", "Unit: "+ this.hexMap.units.getUnitTypeName(unit_type));
+  } else {
+      domSetTextElementTextById("unit1", "Unit: ...");
+  }    
+}
+
+// On Click
+function c(the_index) {
+  if (_isCRTLPressed) {
+    selectedIndex = the_index;
+
+    setTerrain($("terrain_dropdownbox").value);
+  } else if (this.hexMap.areaElements.isAreaElementsAtHexIndex(the_index)) {
+      // An Area Element in the hex info
+      var area_element = this.hexMap.areaElements.getAllAreaElementsAtHexIndex(the_index);
+      var area_element_type = this.hexMap.areaElements.getAreaElementType(area_element);
+      $("terrain_dropdownbox").value = this.hexMap.areas.getAreaTerrainNameFromLocationIndex(the_index);
+      selectedIndex = the_index;
+
+  } else {
+      $("terrain_dropdownbox").value = this.hexMap.areas.getAreaTerrainNameFromLocationIndex(the_index);
+     selectedIndex = the_index;
+
+  }
+
+}
+
+// function mouseDown(event) {
+//  return false;
+// }
+
+// function mouseUp(event) {
+//  return false;
+// }
+
+// function mouseMove(event) {
+//  return true;
+// }
+
+
+function redraw () {
+    hexMapView.clearAll();
+    hexMapView.clearHexMap();
+    hexMapView.draw();
+    hexMapView.fogOfWarOff();
+
+}
+
+function setTerrain(value) {
+    if (value == "none") {
+        ac.deleteAreaAtLocationIndex(selectedIndex);
+
+    } else {
+        var theArea = ac.getAreaFromLocationIndex(selectedIndex);
+        var theTerrainId = ac.getTerrainIdFromName(value);
+        ac.setAreaTerrainId(theArea, theTerrainId);        
+    }
+
+    redraw();
+}
+
+function setAreaElementType(value) {
+    var theAEs = aec.getAllAreaElementsAtHexIndex(selectedIndex);
+    if (theAEs != null) {
+        aec.removeAreaElement(theAEs);
+    }
+
+    if (value == "harbor") {
+        aec.createAreaElement(0, selectedPlayerId, parseInt(value), selectedIndex, "harbor", 30);
+    } else if (value != "none") {
+        // TODO: Needs update to support more AreaElements
+        aec.createAreaElement(0, selectedPlayerId, parseInt(value), selectedIndex, "city", 10);
+    }
+
+    redraw();
+}
+
+function setUnitType(value) {
+    var theUnitsInHex = uc.getAllUnitsAtHexIndex(selectedIndex);
+    if (theUnitsInHex != null) {
+        uc.removeUnit(theUnitsInHex[0]);
+    } else if (value != "none") {
+        uc.createUnit(0, selectedPlayerId, parseInt(value), 9, selectedIndex)
+    }
+
+    redraw();
+}
+
+function setPlayer(value) {
+    if (value != "none") {
+        selectedPlayerId = parseInt(value);
+    } else {
+        selectedPlayerId = null;
+    }
+    
+}
+
+function saveCallBack() {
+    
+}
+
+function save() {
+      // var the_params = "areas="+encodeURIComponent(ac.areasToString()) + "&units="+encodeURIComponent() + "&area_elements="+encodeURIComponent();
+      var the_params = "areas="+encodeURIComponent(Object.toJSON(ac)) + "&units="+encodeURIComponent(Object.toJSON(uc.units)) + "&area_elements="+encodeURIComponent(Object.toJSON(aec.areaElements));
+      <%= remote_function(:url => { :action => 'save_region', :controller => 'ginnungagap'}, :with => :the_params, :update => "javascriptdata", :complete => "saveCallBack();") %>;
+}
+
+function draggingStart(event) {
+    // var x = hexMap.getHexX(the_index);
+    // var y = hexMap.getHexY(the_index, x);
+    // domSetTextElementTextById("hex_index", "Draging:");
+    $("overlayimage").style.cursor="move";
+    _startScreenX = event.screenX;
+    _startScreenY = event.screenY;
+    return true;
+}
+
+function draggingEnd(event) {
+    // var x = hexMap.getHexX(the_index);
+    // var y = hexMap.getHexY(the_index, x);
+    var top = parseInt($("edit_region_view").getStyle("top"));
+    var left = parseInt($("edit_region_view").getStyle("left"));
+    var dX = event.screenX - _startScreenX;
+    var dY = event.screenY - _startScreenY;
+
+    // domSetTextElementTextById("hex_index", "Draging:");
+    $("overlayimage").style.cursor="default";
+    $("edit_region_view").setStyle("top: "+(top+dY)+"px; left: "+(left+dX)+"px;");
+
+    return true;
+}
+
+// function dragging(event) {
+    // var x = hexMap.getHexX(the_index);
+    // var y = hexMap.getHexY(the_index, x);
+//    domSetTextElementTextById("hex_index", "Draging:");
+
+//    return true;
+// }
+
+function mouseDown(event) {
+  _isMouseDown = true;
+   _isCRTLPressed = detectspecialkeys(event)
+  // domSetTextElementTextById("hex_index", "MouseDown ("+_isMouseDown+", "+_hasBeenDragged+")");
+
+  return false;
+}
+
+function mouseUp(event) {
+  _isMouseDown = false;
+ 
+  // domSetTextElementTextById("hex_index", "MouseUp ("+_isMouseDown+", "+_hasBeenDragged+")");
+
+  if (_hasBeenDragged) {
+    _hasBeenDragged = false;
+    draggingEnd(event);
+  }
+
+  return false;
+}
+
+function mouseMove(event) {
+  // domSetTextElementTextById("hex_index", "mouseMove ("+_isMouseDown+", "+_hasBeenDragged+")");
+  if (_isMouseDown) {
+    if (!_hasBeenDragged) {
+      _hasBeenDragged = true;
+      draggingStart(event);
+    }
+  }
+
+  return true;
+}
+
+function detectspecialkeys(e){
+    var evtobj=window.event? event : e
+    if (evtobj.ctrlKey) {
+        return true;
+    }
+
+    return false;        
+}
+
+</script>
+
+<div id="edit_region_save_button" onclick="save();">Update DB</div>
+<ul class="edit_region_dropbox_list">
+    <li>        
+        <form action="select_terrain">
+            Terrain:
+            <select id="terrain_dropdownbox" onchange='setTerrain($("terrain_dropdownbox").value);'>
+                <option value="none" selected="selected">none</option>
+                <% Terrain.find(:all).each { |t| %>
+                <option value="<%= t.name %>"> <%= t.name %> </option>
+                <% } %>
+            </select>
+        </form>
+    </li>
+    <li>        
+            <form action="select_area_element_type">
+                Area Element:
+                <select id="area_element_type_dropdownbox" onchange='setAreaElementType($("area_element_type_dropdownbox").value);'>
+                    <option value="none" selected="selected">none</option>
+                    <%  the_index = 0
+                        AreaElementType.find(:all).each { |t| 
+                            the_index += 1
+                    %>
+                            <option value="<%= the_index %>"> <%= t.name %> </option>
+                    <% } %>
+                </select>
+            </form>
+        
+    </li>
+    <li>
+        
+            <form action="select_unit_type">
+                Unit:
+                <select id="unit_type_dropdownbox" onchange='setUnitType($("unit_type_dropdownbox").value);'>
+                    <option value="none" selected="selected">none</option>
+                    <%  the_index = 0
+                        UnitType.find(:all).each do |t|
+                            the_index += 1
+                    %>
+                        <option value="<%=the_index %>"> <%= t.name %> </option>
+                    <% end %>
+                </select>
+            </form>
+        
+    </li>
+    <li>        
+        <form action="select_player">
+            Player:
+            <select id="player_dropdownbox" onchange='setPlayer($("player_dropdownbox").value);'>
+                <option value="none" selected="selected">none</option>
+                <%
+                   the_index = 0
+                   @colors.each do |the_color| 
+                      the_index += 1
+
+                      if the_index <= @num_of_players %>
+                        <option value="<%= the_index %>"> Player <%= the_index %> (<%= the_color %>) </option>
+                <%    end
+                  end %>
+            </select>
+        </form>
+    </li>
+
+</ul>
+<div id="edit_region_view" >    
+     <div id="overlayimage">
+        <script type="text/javascript">
+        document.write ("<img src='/images/32x32/transpng.png' style='position: relative; left: "+x_graphic_offset+"; top: "+y_graphic_offset+"; z-index: "+Z_IMAGE_MAP+" '  width='<%=@w_canvas %>' height='<%=@h_canvas %>' usemap='#imagemap' border='0'/>");
+        </script>
+    </div>
+
+    <div id="info_box_editor">
+      <div id="hex_index">Hex (..., ...)</div>
+      <div id="terrain1">Terrain: ... </div>
+      <div id="unit1">Unit: ... </div>
+    </div>
+</div>
+
+<map name="imagemap"><%= @image_map %></map>
+<div id="javascriptdata">some text</div>

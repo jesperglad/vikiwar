@@ -1,0 +1,13 @@
+<h1>Upload Regions Info</h1>
+
+<%= error_messages_for('regions_info') %>
+
+<%  form_tag(:action => :upload_regions_info, :html => { :multipart => true}) do %>
+    Upload the regions info file: <%= file_field_tag("uploaded_region_info") %><br>
+    <%= submit_tag('Upload file') %>
+<%  end %>
+<script type="text/javascript">
+  function main() {
+    return 0;
+  }
+</script>

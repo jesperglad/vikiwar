@@ -1,0 +1,124 @@
+<h1>Unit Editor</h1>
+<h2>Options</h2>
+[<%= link_to("ZZZ", :controller => :ginnungagap, :action => :create_region) %>]
+[<%= link_to("XXX", :controller => :ginnungagap, :action => :upload_region) %>]
+[<%= link_to("YYY", :controller => :ginnungagap, :action => :upload_regions_info) %>]
+
+<h2>Unit Types</h2>
+
+<%  form_tag(:action => :upload_unit_types_data, :html => { :multipart => true}) do %>
+    Upload unit types data file: <%= file_field_tag("uploaded_unit_types_data") %><br>
+    <%= submit_tag('Upload file') %>
+<%  end %>
+
+    
+<% all_unit_types = UnitType.find :all %>
+<% att_names = UnitType.column_names() %>
+<table>
+<tr>
+<%
+  index = 0
+  att_names.each do |name|
+    index += 1
+%>
+  <th bgcolor="<%= index % 2 == 1 ? "grey" : "lightgrey" %>">
+    <%= name %>
+  </th>
+<% end %>
+</tr>
+
+<% all_unit_types.each do |ut| %>
+<tr>
+  <% 
+    atts = ut.attributes
+    index = 0
+  %>
+
+  <% att_names.each do |name|
+      index += 1
+  %>
+    <td bgcolor="<%= index % 2 == 1 ? "grey" : "lightgrey" %>">
+      <%= atts[name]  %>
+    </td>
+  <% end %>
+</tr>
+<% end %>
+</table>
+
+<h2>Unit Types (Movement Cost / Combat Bonus)</h2>
+
+<table>
+<tr>
+<th>
+    Unit Type
+</th>
+<% all_terrains = Terrain.find :all %>
+<% index = 0
+   all_terrains.each do |t|
+    index += 1 %>  
+    <th bgcolor="<%= index % 2 == 1 ? "grey" : "lightgrey" %>">
+      <%= t.name %>
+    </th>
+<% end %>
+</tr>
+
+<% all_unit_types.each do |ut| %>
+<tr>
+  <th>
+    <%= ut.name %>
+  </th>
+<% index = 0
+   all_terrains.each do |t|
+    index += 1
+    tute = TerrainUnittypeEffects.find :first, :conditions => ["terrain_id = ? and unit_type_id = ?",t.id,ut.id] %>
+    <td bgcolor="<%= index % 2 == 1 ? "grey" : "lightgrey" %>">
+    <% if tute %>
+      <%= tute.movement_cost %> / <%= tute.combat_bonus %>
+    <% end  %>
+    </td>
+<% end %>
+</tr>
+<% end %>
+</table>
+
+<h2>Unit Types vs Unit Types (Combat Bonus)</h2>
+
+<table>
+<tr>
+<th>
+    Unit Type
+</th>
+<% all_terrains = Terrain.find :all %>
+<% index = 0
+   all_unit_types.each do |ut|
+    index += 1 %>
+    <th bgcolor="<%= index % 2 == 1 ? "grey" : "lightgrey" %>">
+      <%= ut.name %>
+    </th>
+<% end %>
+</tr>
+<% all_unit_types2 = Array.new(all_unit_types) %>
+<% all_unit_types.each do |ut| %>
+<tr>
+  <th>
+    <%= ut.name %>
+  </th>
+<% index = 0
+   all_unit_types2.each do |ut2|
+    index += 1
+    utute = UnitTypeUnitTypeEffects.find :first, :conditions => ["att_unit_type_id = ? and def_unit_type_id = ?",ut.id,ut2.id] %>
+    <td bgcolor="<%= index % 2 == 1 ? "grey" : "lightgrey" %>">
+      <%if utute %>
+        <%= utute.combat_bonus %>
+      <% end  %>
+    </td>
+<% end %>
+</tr>
+<% end %>
+</table>
+
+<script type="text/javascript">
+  function main() {
+    return 0;
+  }
+</script>

@@ -1,0 +1,15 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+<H1>Rename Region</H1>
+
+<% form_tag(:action => :rename_region) do %>
+  <%= text_field_tag "region_name", "#{@region_name}"%><br/>
+<%= submit_tag('Rename')%>
+<% end %>
+  <script type="text/javascript">
+  function main() {
+    return 0;
+  }
+</script>

@@ -1,0 +1,35 @@
+<fieldset>
+  <legend>Profile Details</legend>
+    <% form_for :user, :url => { :action => @the_action } do |f| %>
+      <%= f.error_messages %>
+      <p>
+        <%= f.label :name %><br />
+        <%= f.text_field :name, :size=>20, :maxlength=>20 %>
+      </p>
+      <p>
+        <%= f.label :email %><br />
+        <%= f.text_field :email, :size=>20, :maxlength=>40 %>
+      </p>
+      <p>
+        <%= f.label :in_game_name %><br />
+        <%= f.text_field :in_game_name, :size=>16, :maxlength=>16 %>
+      </p>
+      <p>
+        <%= f.label :password %><br />
+        <%= f.password_field :password %>
+      </p>
+      <p>
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation %>
+      </p>
+
+      <p>
+        <%= f.label :recive_email_notifications %><br />
+        <%= f.check_box :recive_email_notifications, {}, "yes", "no" %> 
+        Do you want to recive (helpful) notifications emails when your battles are starting,
+        going into a new turn, etc.
+      </p>
+
+      <p><%= f.submit "Submit" %></p>
+    <% end %>
+</fieldset>

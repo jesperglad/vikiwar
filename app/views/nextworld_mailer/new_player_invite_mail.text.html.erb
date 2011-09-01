@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <p>
+      <img src="http://415vik.aquinas.hostingrails.com/images/32x32/logo.jpg"></img>
+    </p>
+    
+    <h1>Vikiwar Challengs</h1>
+    <p>
+    <%= @from_in_game_name %> is challenging you to fight in a battle of
+    Vikiwar.
+    </p>
+    
+    <p>
+    Press the link to join the battle of <a href='<%= url_for(:host => "415vik.aquinas.hostingrails.com", :controller => "user_sessions", :action=> "linklogin", :email => @to_email, :password => @rand_pw, :gs_id => @gs_id) %>'><%= @gs_name %></a>.
+    </p>
+
+    <p>
+      Your profile is as follows:
+      <ul>
+        <li>In game name: <b><%= @your_in_game_name %></b></li>
+        <li>Login (email): <b><%=  @to_email %></b></li>
+        <li>Password: <b><%= @rand_pw %></b></li>
+      </ul>
+      You can change these and more by editing your profile within the game.
+    </p>
+
+  </body>
+</html>

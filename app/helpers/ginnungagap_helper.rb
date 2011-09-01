@@ -1,0 +1,2 @@
+module GinnungagapHelper
+end

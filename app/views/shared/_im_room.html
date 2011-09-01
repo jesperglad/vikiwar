@@ -1,0 +1,35 @@
+  <ul class="im_history_list">        
+      <%          
+          if !@the_users_name
+            @the_users_name = Hash.new
+          end
+          
+          if @user_ims
+            @user_ims.each do |the_im|
+                s = ""
+                if !@user_colors && !the_im.from_user_id
+                    s += "<font color='"+@user_colors[the_im.from_user_id]+"'>"
+                else
+                    s += "<font color='black'>"
+                end
+
+                if !@the_users_name[the_im.from_user_id]
+                    @the_users_name[the_im.from_user_id] = User.find(:first, :conditions => ["id = ?",the_im.from_user_id]).in_game_name
+                end
+
+                s += "<b>"+@the_users_name[the_im.from_user_id] + " > </b></font>"+ the_im.message
+       %>
+                <li> <%= s %> </li>
+        <% end %>
+      <% else %>
+        <li>No messages</li>
+      <% end %>
+  </ul>
+
+ <script type="text/javascript"> 
+    scrollIt();
+    if (<%= @im_push %>) {
+        $('im_text_input_im_text').value = '';
+    }
+ </script>
+

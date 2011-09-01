@@ -1,0 +1,273 @@
+<% require 'rss' %>
+<%= javascript_include_tag 'prototype' %>
+<%= javascript_include_tag 'general' %>
+<%= javascript_include_tag 'softscrolllist' %>
+
+<%= stylesheet_link_tag "login_protrait", :media => "all" %>
+<div id="main">
+  <div id="title_image">
+    <div id="title_menu">
+      <ul class="title_menu">
+        <li><%= link_to "Home", { :controller => 'user_sessions', :action => "index"} %></li>
+        <li><a href="#" onclick="rankingLinkCliked();">Ranking</a></li>
+        <li><a href="http://vikiwar.blogspot.com/">About</a></li>
+        <li><a href="#" onclick="loginLinkCliked();">Login</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div id="title_text">
+    <div id="title_main_text">
+      In this year fierce, foreboding omens came over the land of Northumbria.
+      There were excessive whirlwinds, lightning storms, and fiery dragons were
+      seen flying in the sky. These signs were followed by great famine, and on
+      January 8th the ravaging of heathen men destroyed God's church at
+      Lindisfarne.
+    </div>
+    <div id="title_quote">
+      The Anglo-Saxon Chronicle
+    </div>
+  </div>
+  <div id="feature_text">
+    <h1>Vikiwar Features</h1>
+    <p>Unit the kingdom of Denmark</p>
+    <ul>
+      <li>Unit the kingdom of Denmark</li>
+      <li>Historical battles</li>
+    </ul>
+  </div>
+  <div id="join_box">
+    <div id="cancel_button" class="join_cancel_button_pos" onclick="joinCancelButton();"></div>
+     <h1 class="text_box">Profile Details</h1>
+    <fieldset>   
+    <% form_for :user, :url => { :controller => "user", :action => "create" } do |f| %>
+    <%= f.error_messages %>
+      <p>
+        <%= f.label :name %>
+        <%= f.text_field :name, :size=>20, :maxlength=>20 %>
+      </p>
+      <p>
+        <%= f.label :email %>
+        <%= f.text_field :email, :size=>20, :maxlength=>40 %>
+      </p>
+      <p>
+        <%= f.label :in_game_name %>
+        <%= f.text_field :in_game_name, :size=>16, :maxlength=>16 %>
+      </p>
+      <p>
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+      </p>
+      <p>
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation %>
+      </p>
+      <p>
+        <%= f.label :recive_email_notifications %>
+        <%= f.check_box :recive_email_notifications, {}, "yes", "no" %>
+        Do you want to recive (helpful) notifications emails when your battles are starting,
+        going into a new turn, etc.
+      </p>
+      <p><%= f.submit "Submit" %></p>
+    <% end %>
+    </fieldset>
+  </div>
+  
+ 
+  <div id='login_box' class='login_box'>
+    <div id="cancel_button" class="login_cancel_button_pos" onclick="loginCancelButton();"></div>
+    <h1 class='text_box'>Please Login</h1>
+    <% form_for :user_session, :url => {:action => :create} do |f2| %>
+    <%= f2.error_messages %>
+    <p>
+        <%= f2.label :email %>
+        <%= f2.text_field :email, :size=>20, :maxlength=>40 %>
+    </p>
+
+    <p>
+      <%= f2.label :password %>
+      <%= f2.password_field :password %>
+    </p>
+
+    <p>
+      <%= f2.submit "Login" %><br />
+    </p>
+    <% end %>
+    <p>
+      <%= link_to "Forgot your password?", { :controller => 'user', :action => "forgot_passworld"}  %>
+    </p>
+  </div>
+
+  <a onclick="joinButton();" id="join_button" class="button orange">Join Now<br>It Is Free</a>
+  <div id="ranking_box">
+    <div id="cancel_button" class="ranking_cancel_button_pos" onclick="rankingCancelButton();"></div>
+    <h1 class='text_box'>Ranking</h1>
+    <table class='rankings'><tr class='rankings'><th class='rankings'>Rank</th><th class='rankings'>Name</th><th class='rankings'>Score</th></tr></table>
+    <div id="rankings"></div>
+  </div>
+  <div id="news_body">
+    <h1 class="text_box">HEADLINE NEWS</h1>
+     <div id="news_clip_area"><div id="news_scrollpane"></div></div>
+  </div>
+  <div id="actions_body">
+    <h1 class="text_box">NEWS FROM THE BATTLEFIELD</h1>
+    <div id="actions_clip_area"><div id="actions_scrollpane"></div></div>
+  </div>
+  <div id="states_body">
+  </div>
+</div>
+<div id="battleNewsData"></div>
+<div id="headlineNewsData"></div>
+<div id="rankingData"></div>
+
+<script type="text/javascript">
+  var NUM_OF_ACTION_NEWS_ITEMS = 8;
+  var ACTION_NEWS_ELE_HIGHT = 60;
+  var HEADLINE_NEWS_ELE_HIGHT = 120;
+  var LOGIN_LEFT = -370;
+  var LOGIN_RIGHT = 170;
+  var JOIN_TOP = -300;
+  var JOIN_BOTTOM = 100;
+  var RANKING_TOP = -500;
+  var RANKING_BOTTOM = 100;
+
+  var _loginBoxLeftPos = LOGIN_LEFT;
+  var _joinBoxTopPos = JOIN_TOP;
+  var _rankingBoxTopPos = RANKING_TOP
+
+  var _headlineNews = null;
+  var _battleNews = null;
+  var _headlineNewsIndex = 0;
+  var _battleNewsIndex = 0;
+
+  var _anStatusIntervalID = null;
+  var _anStartIntervalLength = 30000;
+  var _newsStartIntervalLength = 31000;
+
+  var _anIntervalLength = _anStartIntervalLength;
+
+  var _scrollList = null;
+  var _newsScrollList = null;
+  
+  function mainCheckStatus() {
+    _scrollList.checkStatus();
+  }
+
+  function mainCheckNewsStatus() {
+    _newsScrollList.checkStatus();
+  }
+
+  function rankingDataUpdated() {
+    var rankingEle = $("rankingData");
+    rankingEle.normalize();
+
+    var data = "("+rankingEle.firstChild.data+")";
+    var rankings = $A(eval(data));
+    var html = "<table class='rankings'>";
+    var index = 1;
+    
+    rankings.each(function(pair){
+      html += "<tr class='rankings'><td class='rankings'>"+index+"</td><td class='rankings'>"+pair[0]+"</td><td class='rankings'>"+pair[1]+"</td></tr>";
+      index +=1;
+    });
+
+    html += "</table>";
+
+    $("rankings").update(html);
+  }
+  
+  function retriveRankings() {  
+    var startIndex = 0;
+    var endIndex = 100;
+
+    var theParameters = "start="+encodeURIComponent(startIndex) + "&end="+encodeURIComponent(endIndex);
+    new Ajax.Updater(
+      $("rankingData"),
+      '/user/ranking',
+      {asynchronous:true, evalScripts:true, onComplete:function(request){rankingDataUpdated();}, parameters:theParameters}
+    );
+  }
+  
+  function main() {
+    $("title_image").setStyle("top: -20px;");
+    $("title_text").setStyle("top: 70px;");
+    $("feature_text").setStyle("top: 150px;");
+    $("join_button").setStyle("left: 730px;");
+    // if (navigator['appName'] == "Microsoft Internet Explorer")
+    // alert("You seem to be using a version of Microsoft Internet Explorer.\nWe are sorry, but the current version of Vikiwar has not been tested with Microsoft Internet Explore. If possible please shift to Firefox, Chrome or Safari.");
+    // var actionsNewsMS = new MethodScheduler(_anStartIntervalLength, anCheckStatus);
+    // actionsNewsMS.checkStatus();
+
+    _newsScrollList = new SoftScrollList("news_scrollpane", "headlineNewsData", "headline-news", HEADLINE_NEWS_ELE_HIGHT, NUM_OF_ACTION_NEWS_ITEMS);
+    _scrollList = new SoftScrollList("actions_scrollpane", "battleNewsData", "battle-news", ACTION_NEWS_ELE_HIGHT, NUM_OF_ACTION_NEWS_ITEMS);
+
+    retriveRankings();
+    
+    setInterval(mainCheckNewsStatus, _newsStartIntervalLength);
+    mainCheckNewsStatus();
+
+    setInterval(mainCheckStatus, _anStartIntervalLength);
+    mainCheckStatus();
+  }
+
+  function updateBattleNews() {
+    _scrollList.scrollList();
+  }
+  
+  function updateHeadlineNews() {
+    $("headlineNewsData").normalize();
+    _headlineNews =  $A(eval("("+$("headlineNewsData").firstChild.data+")"));
+    
+    var latestNews = _headlineNews.first();
+    if (latestNews != undefined) {
+      _headlineNewsIndex = latestNews.id;
+    }
+  }
+  
+  function loginLinkCliked() {
+    if (_loginBoxLeftPos == LOGIN_LEFT) {
+      _loginBoxLeftPos = LOGIN_RIGHT;
+    } else {
+      _loginBoxLeftPos = LOGIN_LEFT;
+    }
+
+    $("login_box").setStyle("left: "+_loginBoxLeftPos+"px;");
+  }
+
+  function loginCancelButton() {
+    _loginBoxLeftPos = LOGIN_LEFT;
+    $("login_box").setStyle("left: "+LOGIN_LEFT+"px;");
+  }
+
+  function joinButton() {
+    _loginBoxLeftPos = LOGIN_LEFT;
+    $("login_box").setStyle("left: "+_loginBoxLeftPos+"px;");
+
+    if (_joinBoxTopPos == JOIN_BOTTOM) {
+      _joinBoxTopPos = JOIN_TOP;
+    } else {
+      _joinBoxTopPos = JOIN_BOTTOM;
+    }    
+    $("join_box").setStyle("top: "+_joinBoxTopPos+"px;");
+  }
+
+  function joinCancelButton() {
+    _joinBoxTopPos = JOIN_TOP;
+    $("join_box").setStyle("top: "+_joinBoxTopPos+"px;");
+  }
+
+  function rankingLinkCliked() {
+    if (_rankingBoxTopPos == RANKING_BOTTOM) {
+      _rankingBoxTopPos = RANKING_TOP;
+    } else {
+      _rankingBoxTopPos = RANKING_BOTTOM;
+    }
+    $("ranking_box").setStyle("top: "+_rankingBoxTopPos+"px;");    
+  }
+
+  function rankingCancelButton() {
+    _rankingBoxTopPos = RANKING_TOP;
+    $("ranking_box").setStyle("top: "+_rankingBoxTopPos+"px;");    
+  }
+  
+</script>
